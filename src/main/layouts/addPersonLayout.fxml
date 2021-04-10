@@ -13,11 +13,11 @@
     <VBox layoutX="15.0" layoutY="65.0" spacing="15.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="65.0">
         <VBox>
             <Label text="Full Name" />
-            <TextField fx:id="fullNameTextField" onKeyPressed="#formatFullNameField" />
+            <TextField fx:id="fullNameTextField" onKeyPressed="#formatFullNameTextField" />
         </VBox>
         <VBox>
             <Label text="Personal Code" />
-            <TextField onAction="#checkFields" />
+            <TextField fx:id="personalCodeTextField" onKeyPressed="#formatPersonalCodeTextField" />
         </VBox>
         <VBox layoutX="10.0" layoutY="67.0">
             <Label text="Year of Birth" />

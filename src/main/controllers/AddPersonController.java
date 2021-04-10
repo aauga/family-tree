@@ -13,16 +13,32 @@ public class AddPersonController {
     @FXML
     private TextField fullNameTextField;
 
+    @FXML
+    private TextField personalCodeTextField;
+
     public void initialize() {
 
     }
 
     @FXML
-    private void formatFullNameField() {
+    private void formatFullNameTextField() {
         fullNameTextField.setTextFormatter(new TextFormatter<>(change -> {
             String newText = change.getControlNewText();
 
             if (newText.isEmpty() || (newText.length() <= FULL_NAME_MAX_LENGTH && newText.matches("[ a-zA-Z-]+"))) {
+                return change;
+            }
+
+            return null;
+        }));
+    }
+
+    @FXML
+    private void formatPersonalCodeTextField() {
+        personalCodeTextField.setTextFormatter(new TextFormatter<>(change -> {
+            String newText = change.getControlNewText();
+
+            if(newText.isEmpty() || (newText.length() <= PERSONAL_CODE_MAX_LENGTH && newText.matches("[0-9]+"))) {
                 return change;
             }
 
