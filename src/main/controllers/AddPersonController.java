@@ -4,7 +4,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
 
-import java.sql.Date;
 import java.util.Calendar;
 
 public class AddPersonController {
