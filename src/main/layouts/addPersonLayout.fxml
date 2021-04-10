@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane onMouseClicked="#checkFields" prefHeight="350.0" prefWidth="250.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.controllers.AddPersonController">
+    <Label layoutX="66.0" layoutY="73.0" text="Add a Person" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="15.0">
+        <font>
+          <Font name="Arial Bold" size="24.0" />
+        </font>
+    </Label>
+    <VBox layoutX="15.0" layoutY="65.0" spacing="15.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="65.0">
+        <VBox>
+            <Label text="Full Name" />
+            <TextField fx:id="fullNameTextField" onKeyPressed="#formatFullNameField" />
+        </VBox>
+        <VBox>
+            <Label text="Personal Code" />
+            <TextField onAction="#checkFields" />
+        </VBox>
+        <VBox layoutX="10.0" layoutY="67.0">
+            <Label text="Year of Birth" />
+            <TextField onAction="#checkFields" />
+        </VBox>
+        <VBox layoutX="10.0" layoutY="124.0">
+            <Label text="Place of Birth" />
+            <TextField onAction="#checkFields" />
+        </VBox>
+    </VBox>
+   <ButtonBar layoutX="15.0" layoutY="310.0" prefHeight="40.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0">
+     <buttons>
+       <Button mnemonicParsing="false" text="Add" />
+     </buttons>
+   </ButtonBar>
+</AnchorPane>
