@@ -2,6 +2,7 @@ package main.controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
 
@@ -10,12 +11,15 @@ import java.util.Calendar;
 public class AddPersonController {
     // Constants
     private static final int FULL_NAME_MAX_LENGTH = 48;
-    private static final int PERSONAL_CODE_MAX_LENGTH = 11;
+    private static final int PERSONAL_CODE_LENGTH = 11;
     private static final int BIRTH_YEAR_MAX_LENGTH = 4;
     private static final int BIRTH_PLACE_MAX_LENGTH = 32;
 
     @FXML
     private TextField fullNameTextField, personalCodeTextField, birthYearTextField, birthPlaceTextField;
+
+    @FXML
+    private Label personalCodeTooShortLabel;
 
     @FXML
     private Button addPersonButton;
@@ -42,7 +46,7 @@ public class AddPersonController {
         personalCodeTextField.setTextFormatter(new TextFormatter<>(change -> {
             String newText = change.getControlNewText();
 
-            if(newText.isEmpty() || (newText.length() <= PERSONAL_CODE_MAX_LENGTH && newText.matches("[0-9]+"))) {
+            if(newText.isEmpty() || (newText.length() <= PERSONAL_CODE_LENGTH && newText.matches("[0-9]+"))) {
                 return change;
             }
 
@@ -91,15 +95,19 @@ public class AddPersonController {
     }
 
     private boolean textFieldsEmpty() {
-        return !fullNameTextField.getText().isEmpty() && !personalCodeTextField.getText().isEmpty() && !birthYearTextField.getText().isEmpty() && !birthPlaceTextField.getText().isEmpty();
+        return fullNameTextField.getText().isEmpty() && personalCodeTextField.getText().isEmpty() && birthYearTextField.getText().isEmpty() && birthPlaceTextField.getText().isEmpty();
     }
 
     @FXML
     private void checkControls() {
         checkIfBirthYearValid();
 
-        if(textFieldsEmpty()) {
+        if(!textFieldsEmpty() && personalCodeTextField.getText().length() == PERSONAL_CODE_LENGTH) {
             addPersonButton.setDisable(false);
+            personalCodeTooShortLabel.setVisible(false);
+        }
+        else {
+            personalCodeTooShortLabel.setVisible(true);
         }
     }
 }

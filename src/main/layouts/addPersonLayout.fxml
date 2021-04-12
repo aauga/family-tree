@@ -16,7 +16,12 @@
             <TextField fx:id="fullNameTextField" onKeyPressed="#formatFullNameTextField" onMousePressed="#checkControls" />
         </VBox>
         <VBox>
-            <Label text="Personal Code" />
+         <HBox spacing="10.0">
+            <children>
+                  <Label text="Personal Code" />
+               <Label fx:id="personalCodeTooShortLabel" text="Too short!" textFill="RED" visible="false" />
+            </children>
+         </HBox>
             <TextField fx:id="personalCodeTextField" onKeyPressed="#formatPersonalCodeTextField" onMousePressed="#checkControls" />
         </VBox>
         <VBox layoutX="10.0" layoutY="67.0">
