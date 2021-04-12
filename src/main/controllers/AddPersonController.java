@@ -1,6 +1,7 @@
 package main.controllers;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
 
@@ -14,13 +15,10 @@ public class AddPersonController {
     private static final int BIRTH_PLACE_MAX_LENGTH = 32;
 
     @FXML
-    private TextField fullNameTextField;
+    private TextField fullNameTextField, personalCodeTextField, birthYearTextField, birthPlaceTextField;
 
     @FXML
-    private TextField personalCodeTextField;
-
-    @FXML
-    private TextField birthYearTextField;
+    private Button addPersonButton;
 
     public void initialize() {
 
@@ -80,7 +78,28 @@ public class AddPersonController {
     }
 
     @FXML
-    private void checkTextFields() {
+    private void formatBirthPlaceTextField() {
+        birthPlaceTextField.setTextFormatter(new TextFormatter<>(change -> {
+            String newText = change.getControlNewText();
+
+            if(newText.isEmpty() || (newText.length() <= BIRTH_PLACE_MAX_LENGTH && newText.matches("[ a-zA-Z-]+"))) {
+                return change;
+            }
+
+            return null;
+        }));
+    }
+
+    private boolean textFieldsEmpty() {
+        return !fullNameTextField.getText().isEmpty() && !personalCodeTextField.getText().isEmpty() && !birthYearTextField.getText().isEmpty() && !birthPlaceTextField.getText().isEmpty();
+    }
+
+    @FXML
+    private void checkControls() {
         checkIfBirthYearValid();
+
+        if(textFieldsEmpty()) {
+            addPersonButton.setDisable(false);
+        }
     }
 }
