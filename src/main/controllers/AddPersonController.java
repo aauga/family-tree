@@ -114,8 +114,9 @@ public class AddPersonController {
                 || birthPlaceTextField.getText().isEmpty();
     }
 
+    // Function enables the "Add Person" button if all fields are filled in correctly and disables it if not.
     @FXML
-    private void checkControls() {
+    private void checkFields() {
         checkIfBirthYearValid();
 
         if(!textFieldsEmpty() && personalCodeTextField.getText().length() == PERSONAL_CODE_LENGTH) {
