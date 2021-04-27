@@ -105,10 +105,10 @@ public class AddPersonController {
 
     private boolean textFieldsEmpty() {
         return firstNameTextField.getText().isEmpty()
-                && lastNameTextField.getText().isEmpty()
-                && personalCodeTextField.getText().isEmpty()
-                && birthYearTextField.getText().isEmpty()
-                && birthPlaceTextField.getText().isEmpty();
+                || lastNameTextField.getText().isEmpty()
+                || personalCodeTextField.getText().isEmpty()
+                || birthYearTextField.getText().isEmpty()
+                || birthPlaceTextField.getText().isEmpty();
     }
 
     @FXML
