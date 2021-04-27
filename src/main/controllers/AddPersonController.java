@@ -5,6 +5,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
+import javafx.stage.Stage;
+import main.data.Person;
+import main.data.Storage;
 
 import java.util.Calendar;
 
@@ -125,7 +128,18 @@ public class AddPersonController {
     }
 
     @FXML
-    private void addToStorage() {
+    private void addPersonToStorage() {
+        String firstName = firstNameTextField.getText();
+        String lastName = lastNameTextField.getText();
+        String personalCode = personalCodeTextField.getText();
+        int birthYear = Integer.parseInt(birthYearTextField.getText());
+        String birthPlace = birthPlaceTextField.getText();
 
+        Person person = new Person(firstName, lastName, personalCode, birthYear, birthPlace);
+        Storage.addPerson(person);
+
+        // Close window
+        Stage stage = (Stage) addPersonButton.getScene().getWindow();
+        stage.close();
     }
 }

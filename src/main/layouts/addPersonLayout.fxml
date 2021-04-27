@@ -45,7 +45,7 @@
     </VBox>
    <ButtonBar layoutX="15.0" layoutY="310.0" onMousePressed="#checkControls" prefHeight="40.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0">
      <buttons>
-       <Button fx:id="addPersonButton" disable="true" mnemonicParsing="false" onAction="#addToStorage" onMousePressed="#checkControls" text="Add" />
+       <Button fx:id="addPersonButton" disable="true" mnemonicParsing="false" onAction="#addPersonToStorage" onMousePressed="#checkControls" text="Add" />
      </buttons>
    </ButtonBar>
 </AnchorPane>
