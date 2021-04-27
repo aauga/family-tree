@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class MainController {
 
@@ -22,6 +23,7 @@ public class MainController {
         stage.setScene(new Scene(parent, windowWidth, windowHeight));
         stage.setMinWidth(windowWidth + 15);
         stage.setMinHeight(windowHeight + 40);
+        stage.initStyle(StageStyle.UTILITY);
         stage.show();
     }
 
