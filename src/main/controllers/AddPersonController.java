@@ -24,10 +24,6 @@ public class AddPersonController {
     @FXML
     private Button addPersonButton;
 
-    public void initialize() {
-
-    }
-
     @FXML
     private void formatFullNameTextField() {
         fullNameTextField.setTextFormatter(new TextFormatter<>(change -> {
