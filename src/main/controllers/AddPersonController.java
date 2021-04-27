@@ -10,13 +10,13 @@ import java.util.Calendar;
 
 public class AddPersonController {
     // Constants
-    private static final int FULL_NAME_MAX_LENGTH = 48;
+    private static final int NAME_MAX_LENGTH = 16;
     private static final int PERSONAL_CODE_LENGTH = 11;
     private static final int BIRTH_YEAR_MAX_LENGTH = 4;
     private static final int BIRTH_PLACE_MAX_LENGTH = 32;
 
     @FXML
-    private TextField fullNameTextField, personalCodeTextField, birthYearTextField, birthPlaceTextField;
+    private TextField firstNameTextField, lastNameTextField, personalCodeTextField, birthYearTextField, birthPlaceTextField;
 
     @FXML
     private Label personalCodeTooShortLabel;
@@ -25,11 +25,24 @@ public class AddPersonController {
     private Button addPersonButton;
 
     @FXML
-    private void formatFullNameTextField() {
-        fullNameTextField.setTextFormatter(new TextFormatter<>(change -> {
+    private void formatFirstNameTextField() {
+        firstNameTextField.setTextFormatter(new TextFormatter<>(change -> {
             String newText = change.getControlNewText();
 
-            if (newText.isEmpty() || (newText.length() <= FULL_NAME_MAX_LENGTH && newText.matches("[ a-zA-Z-]+"))) {
+            if (newText.isEmpty() || (newText.length() <= NAME_MAX_LENGTH && newText.matches("[ a-zA-Z-]+"))) {
+                return change;
+            }
+
+            return null;
+        }));
+    }
+
+    @FXML
+    private void formatLastNameTextField() {
+        lastNameTextField.setTextFormatter(new TextFormatter<>(change -> {
+            String newText = change.getControlNewText();
+
+            if (newText.isEmpty() || (newText.length() <= NAME_MAX_LENGTH && newText.matches("[ a-zA-Z-]+"))) {
                 return change;
             }
 
@@ -91,7 +104,11 @@ public class AddPersonController {
     }
 
     private boolean textFieldsEmpty() {
-        return fullNameTextField.getText().isEmpty() && personalCodeTextField.getText().isEmpty() && birthYearTextField.getText().isEmpty() && birthPlaceTextField.getText().isEmpty();
+        return firstNameTextField.getText().isEmpty()
+                && lastNameTextField.getText().isEmpty()
+                && personalCodeTextField.getText().isEmpty()
+                && birthYearTextField.getText().isEmpty()
+                && birthPlaceTextField.getText().isEmpty();
     }
 
     @FXML
@@ -105,5 +122,10 @@ public class AddPersonController {
         else {
             personalCodeTooShortLabel.setVisible(true);
         }
+    }
+
+    @FXML
+    private void addToStorage() {
+
     }
 }

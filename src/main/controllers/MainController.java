@@ -14,7 +14,7 @@ public class MainController {
     private AnchorPane canvas;
 
     public void showAddPersonWindow() throws Exception {
-        int windowWidth = 250;
+        int windowWidth = 300;
         int windowHeight = 350;
 
         Parent parent = FXMLLoader.load(getClass().getResource("../layouts/addPersonLayout.fxml"));
