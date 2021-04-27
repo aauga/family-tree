@@ -1,11 +1,16 @@
 package main.controllers;
 
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class MainController {
+
+    @FXML
+    private AnchorPane canvas;
 
     public void showAddPersonWindow() throws Exception {
         int windowWidth = 250;
@@ -18,5 +23,11 @@ public class MainController {
         stage.setMinWidth(windowWidth + 15);
         stage.setMinHeight(windowHeight + 40);
         stage.show();
+    }
+
+    @FXML
+    public void enlargeCanvas() {
+        canvas.setPrefHeight(canvas.getHeight() + 50.0);
+        canvas.setPrefWidth(canvas.getWidth() + 50.0);
     }
 }
