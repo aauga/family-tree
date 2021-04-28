@@ -145,6 +145,8 @@ public class AddPersonController {
         Node node = new Node(person, Canvas.getMousePosX(), Canvas.getMousePosY());
         Storage.addNode(node);
 
+        Canvas.addToCanvas(person);
+
         // Close window
         Stage stage = (Stage) addPersonButton.getScene().getWindow();
         stage.close();

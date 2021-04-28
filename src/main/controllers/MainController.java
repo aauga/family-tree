@@ -14,9 +14,15 @@ public class MainController {
     @FXML
     private AnchorPane canvas;
 
+    public void initialize() {
+        Canvas.setCanvas(canvas);
+    }
+
     public void showAddPersonWindow() throws Exception {
         int windowWidth = 300;
         int windowHeight = 350;
+
+        getMouseCoordinates();
 
         Parent parent = FXMLLoader.load(getClass().getResource("../layouts/addPersonLayout.fxml"));
         Stage stage = new Stage();
@@ -26,8 +32,6 @@ public class MainController {
         stage.setMinHeight(windowHeight + 40);
         stage.initStyle(StageStyle.UTILITY);
         stage.show();
-
-        getMouseCoordinates();
     }
 
     private void getMouseCoordinates() {
