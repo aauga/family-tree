@@ -7,8 +7,13 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import main.data.Person;
+import main.data.Storage;
+import main.data.nodes.Node;
 
 public class MainController {
+
+    private static double mousePosX, mousePosY;
 
     @FXML
     private AnchorPane canvas;
@@ -25,6 +30,15 @@ public class MainController {
         stage.setMinHeight(windowHeight + 40);
         stage.initStyle(StageStyle.UTILITY);
         stage.show();
+
+        getMouseCoordinates();
+    }
+
+    private void getMouseCoordinates() {
+        canvas.setOnMouseClicked(mouseEvent -> {
+            mousePosX = mouseEvent.getX();
+            mousePosY = mouseEvent.getY();
+        });
     }
 
     @FXML

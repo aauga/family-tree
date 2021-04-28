@@ -8,7 +8,9 @@ import javafx.scene.control.TextFormatter;
 import javafx.stage.Stage;
 import main.data.Person;
 import main.data.Storage;
+import main.data.nodes.Node;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 
 public class AddPersonController {
