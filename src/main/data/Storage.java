@@ -11,4 +11,13 @@ public class Storage {
     public static void addPerson(Person person) {
         people.add(person);
     }
+
+    // Getters
+    public static ArrayList<Node> getNodeArray() {
+        return nodes;
+    }
+
+    public static ArrayList<Person> getPeopleArray() {
+        return people;
+    }
 }
