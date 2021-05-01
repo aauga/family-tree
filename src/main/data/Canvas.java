@@ -17,15 +17,17 @@ public class Canvas {
         String lastName = person.getLastName();
 
         text.setText(firstName + " " + lastName.charAt(0) + ".");
-        text.setLayoutX(mousePosX - 20.0);
-        text.setLayoutY(mousePosY + 4.0);
 
-        double textHeight = text.getBoundsInLocal().getHeight();
         double textWidth = text.getBoundsInLocal().getWidth();
+        double textHeight = text.getBoundsInLocal().getHeight();
+
+        text.setLayoutX(mousePosX - textWidth / 2.0);
+        text.setLayoutY(mousePosY - textHeight / 4.0);
+        text.setFill(Color.WHITE);
 
         ellipse.setLayoutX(mousePosX);
-        ellipse.setLayoutY(mousePosY);
-        ellipse.setRadiusX(textWidth);
+        ellipse.setLayoutY(mousePosY - textHeight / 2.0);
+        ellipse.setRadiusX(textWidth * 0.8);
         ellipse.setRadiusY(textHeight);
         ellipse.setFill(Color.GREEN);
 
