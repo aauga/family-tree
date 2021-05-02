@@ -13,15 +13,15 @@
     <VBox layoutX="15.0" layoutY="65.0" spacing="15.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="65.0">
         <VBox>
              <Label text="First person" />
-         <ComboBox prefWidth="270.0" promptText="Select first person..." />
-        </VBox>
-        <VBox layoutX="10.0" layoutY="67.0">
-            <Label text="First person is the ... of second person" />
-         <ChoiceBox fx:id="connectionType" prefWidth="270.0" />
+         <ComboBox fx:id="firstPersonComboBox" prefWidth="270.0" promptText="Select first person..." />
         </VBox>
         <VBox layoutX="10.0" layoutY="124.0">
             <Label text="Second person" />
-         <ComboBox prefWidth="270.0" promptText="Select second person..." />
+         <ComboBox fx:id="secondPersonBox" disable="true" prefWidth="270.0" promptText="Select second person..." />
+        </VBox>
+        <VBox layoutX="10.0" layoutY="67.0">
+            <Label text="First person is the ... of second person" />
+         <ChoiceBox fx:id="connectionType" disable="true" prefWidth="270.0" />
         </VBox>
     </VBox>
     <ButtonBar layoutX="15.0" layoutY="310.0" prefHeight="40.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0">

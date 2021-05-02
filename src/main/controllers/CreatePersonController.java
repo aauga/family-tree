@@ -11,6 +11,7 @@ import main.data.Person;
 import main.data.Storage;
 import main.data.Node;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 
 public class CreatePersonController {
@@ -24,7 +25,7 @@ public class CreatePersonController {
     private TextField firstNameTextField, lastNameTextField, personalCodeTextField, birthYearTextField, birthPlaceTextField;
 
     @FXML
-    private Label personalCodeTooShortLabel;
+    private Label personalCodeErrorLabel;
 
     @FXML
     private Button addPersonButton;
@@ -116,18 +117,44 @@ public class CreatePersonController {
                 || birthPlaceTextField.getText().isEmpty();
     }
 
+    private boolean personalCodeExists(String personalCode) {
+        ArrayList<Person> people = Storage.getPeopleArray();
+
+        for (Person person : people) {
+            if (personalCode.equals(person.getPersonalCode())) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private boolean personalCodeValid() {
+        String personalCode = personalCodeTextField.getText();
+
+        if(personalCode.length() == PERSONAL_CODE_LENGTH) {
+            if(!personalCodeExists(personalCode)) {
+                personalCodeErrorLabel.setVisible(false);
+                return true;
+            }
+            else {
+                personalCodeErrorLabel.setText("Already exists!");
+                personalCodeErrorLabel.setVisible(true);
+            }
+        }
+        else if(!personalCode.isEmpty()){
+            personalCodeErrorLabel.setText("Too short!");
+            personalCodeErrorLabel.setVisible(true);
+        }
+
+        return false;
+    }
+
     // Function enables the "Add Person" button if all fields are filled in correctly and disables it if not.
     @FXML
     private void checkFields() {
         checkIfBirthYearValid();
-
-        if(!textFieldsEmpty() && personalCodeTextField.getText().length() == PERSONAL_CODE_LENGTH) {
-            addPersonButton.setDisable(false);
-            personalCodeTooShortLabel.setVisible(false);
-        }
-        else {
-            personalCodeTooShortLabel.setVisible(true);
-        }
+        addPersonButton.setDisable(!personalCodeValid() || textFieldsEmpty());
     }
 
     @FXML
