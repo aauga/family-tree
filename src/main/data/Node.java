@@ -1,4 +1,4 @@
-package main.data.nodes;
+package main.data;
 
 import main.data.Person;
 

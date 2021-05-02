@@ -1,7 +1,5 @@
 package main.data;
 
-import main.data.nodes.Node;
-
 import java.util.ArrayList;
 
 public class Storage {

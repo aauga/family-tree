@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 import main.data.Canvas;
 import main.data.Person;
 import main.data.Storage;
-import main.data.nodes.Node;
+import main.data.Node;
 
 import java.util.Calendar;
 
