@@ -13,7 +13,7 @@ import main.data.nodes.Node;
 
 import java.util.Calendar;
 
-public class AddPersonController {
+public class CreatePersonController {
     // Constants
     private static final int NAME_MAX_LENGTH = 16;
     private static final int PERSONAL_CODE_LENGTH = 11;

@@ -4,7 +4,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -32,7 +31,7 @@ public class MainController {
             Parent parent = null;
 
             try {
-                parent = FXMLLoader.load(getClass().getResource("../layouts/addPersonLayout.fxml"));
+                parent = FXMLLoader.load(getClass().getResource("../layouts/createPerson.fxml"));
             } catch (IOException e) {
                 e.printStackTrace();
             }

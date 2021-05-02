@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane onMousePressed="#checkFields" prefHeight="350.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.controllers.AddPersonController">
+<AnchorPane onMousePressed="#checkFields" prefHeight="350.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.controllers.CreatePersonController">
     <Label layoutX="66.0" layoutY="73.0" text="Add a Person" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="15.0">
         <font>
           <Font name="Arial Bold" size="24.0" />
