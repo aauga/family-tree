@@ -17,7 +17,7 @@
         </VBox>
         <VBox layoutX="10.0" layoutY="67.0">
             <Label text="First person is the ... of second person" />
-         <ChoiceBox prefWidth="270.0" />
+         <ChoiceBox fx:id="connectionType" prefWidth="270.0" />
         </VBox>
         <VBox layoutX="10.0" layoutY="124.0">
             <Label text="Second person" />
