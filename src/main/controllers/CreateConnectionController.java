@@ -1,19 +1,16 @@
 package main.controllers;
 
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 
 public class CreateConnectionController {
 
     @FXML
-    private ChoiceBox connectionType;
+    private ChoiceBox<String> connectionType;
 
     public void initialize() {
-        connectionType.getItems().add("Father");
-        connectionType.getItems().add("Mother");
-        connectionType.getItems().add("Child");
-        connectionType.getItems().add("Grandparent");
-        connectionType.getItems().add("Great-Grandparent");
-        connectionType.getItems().add("Other");
+        connectionType.setItems(FXCollections.observableArrayList(
+                "Father", "Mother", "Child", "Grandparent", "Great-grandparent", "Other"));
     }
 }
