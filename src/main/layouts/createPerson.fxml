@@ -11,27 +11,23 @@
         </font>
     </Label>
     <VBox layoutX="15.0" layoutY="65.0" spacing="15.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="65.0">
-      <HBox spacing="15.0">
-         <children>
-              <VBox>
-                  <Label text="First Name" />
-                  <TextField fx:id="firstNameTextField" onKeyPressed="#formatFirstNameTextField" onMousePressed="#checkFields" />
-              </VBox>
+        <HBox spacing="15.0">
             <VBox>
-               <children>
-                  <Label text="Last Name" />
-                  <TextField fx:id="lastNameTextField" onKeyPressed="#formatLastNameTextField" onMousePressed="#checkFields" />
-               </children>
+                <Label text="First Name"/>
+                <TextField fx:id="firstNameTextField" onKeyPressed="#formatFirstNameTextField"
+                           onMousePressed="#checkFields"/>
             </VBox>
-         </children>
-      </HBox>
+            <VBox>
+                <Label text="Last Name"/>
+                <TextField fx:id="lastNameTextField" onKeyPressed="#formatLastNameTextField"
+                           onMousePressed="#checkFields"/>
+            </VBox>
+        </HBox>
         <VBox>
-         <HBox spacing="10.0">
-            <children>
-                  <Label text="Personal Code" />
-               <Label fx:id="personalCodeTooShortLabel" text="Too short!" textFill="RED" visible="false" />
-            </children>
-         </HBox>
+            <HBox spacing="10.0">
+                <Label text="Personal Code"/>
+                <Label fx:id="personalCodeTooShortLabel" text="Too short!" textFill="RED" visible="false"/>
+            </HBox>
             <TextField fx:id="personalCodeTextField" onKeyPressed="#formatPersonalCodeTextField" onMousePressed="#checkFields" />
         </VBox>
         <VBox layoutX="10.0" layoutY="67.0">
