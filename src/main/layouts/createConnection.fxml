@@ -1,14 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="main.layouts.CreateConnection"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="300.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.controllers.CreateConnectionController">
+    <Label layoutX="66.0" layoutY="73.0" text="Create a Connection" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="15.0">
+        <font>
+            <Font name="Arial Bold" size="24.0" />
+        </font>
+    </Label>
+    <VBox layoutX="15.0" layoutY="65.0" spacing="15.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="65.0">
+        <VBox>
+             <Label text="First person" />
+         <ComboBox prefWidth="270.0" promptText="Select first person..." />
+        </VBox>
+        <VBox layoutX="10.0" layoutY="67.0">
+            <Label text="First person is the ... of second person" />
+         <ChoiceBox prefWidth="270.0" />
+        </VBox>
+        <VBox layoutX="10.0" layoutY="124.0">
+            <Label text="Second person" />
+         <ComboBox prefWidth="270.0" promptText="Select second person..." />
+        </VBox>
+    </VBox>
+    <ButtonBar layoutX="15.0" layoutY="310.0" prefHeight="40.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0">
+        <buttons>
+            <Button disable="true" mnemonicParsing="false" text="Connect" />
+        </buttons>
+    </ButtonBar>
 </AnchorPane>

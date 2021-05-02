@@ -20,15 +20,13 @@ public class MainController {
         Canvas.setCanvas(canvas);
     }
 
-    public void showAddPersonWindow() {
-        int windowWidth = 300;
-        int windowHeight = 350;
-
+    public void showCreatePersonWindow() {
         canvas.setOnMouseClicked(mouseEvent -> {
             Canvas.setMousePosX(mouseEvent.getX());
             Canvas.setMousePosY(mouseEvent.getY());
 
             Parent parent = null;
+            Stage stage = new Stage();
 
             try {
                 parent = FXMLLoader.load(getClass().getResource("../layouts/createPerson.fxml"));
@@ -36,14 +34,26 @@ public class MainController {
                 e.printStackTrace();
             }
 
-            Stage stage = new Stage();
             stage.setTitle("Add a Person");
-            stage.setScene(new Scene(parent, windowWidth, windowHeight));
-            stage.setMinWidth(windowWidth + 15);
-            stage.setMinHeight(windowHeight + 40);
+            stage.setScene(new Scene(parent, 300, 350));
+            stage.setResizable(false);
+
             stage.initStyle(StageStyle.UTILITY);
             stage.show();
         });
+    }
+
+    @FXML
+    public void showCreateConnectionWindow() throws IOException {
+        Parent parent = FXMLLoader.load(getClass().getResource("../layouts/createConnection.fxml"));
+        Stage stage = new Stage();
+
+        stage.setTitle("Create a Connection");
+        stage.setScene(new Scene(parent, 300, 300));
+        stage.setResizable(false);
+
+        stage.initStyle(StageStyle.UTILITY);
+        stage.show();
     }
 
     @FXML
