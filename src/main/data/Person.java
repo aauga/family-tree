@@ -33,4 +33,9 @@ public class Person {
     public int getBirthYear() {
         return birthYear;
     }
+
+    @Override
+    public String toString() {
+        return firstName + " " + lastName.charAt(0) + ". (" + personalCode + ")";
+    }
 }
