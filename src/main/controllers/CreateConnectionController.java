@@ -31,4 +31,27 @@ public class CreateConnectionController {
             firstPersonComboBox.getItems().add(person);
         }
     }
+
+    @FXML
+    public void firstPersonSelected() {
+        int selectedId = firstPersonComboBox.getSelectionModel().getSelectedIndex();
+
+        ArrayList<Person> list = Storage.getPeopleArray();
+        ArrayList<Person> connections = list.get(selectedId).getConnections();
+
+        // Remove the person and his connections from available options
+        list.remove(selectedId);
+        list.remove(connections);
+
+        for(Person person : list) {
+            secondPersonComboBox.getItems().add(person);
+        }
+
+        secondPersonComboBox.setDisable(false);
+    }
+
+    @FXML
+    public void secondPersonSelected() {
+        connectionType.setDisable(false);
+    }
 }

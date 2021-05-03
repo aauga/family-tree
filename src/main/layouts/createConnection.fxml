@@ -13,11 +13,11 @@
     <VBox layoutX="15.0" layoutY="65.0" spacing="15.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="65.0">
         <VBox>
              <Label text="First person" />
-         <ComboBox fx:id="firstPersonComboBox" prefWidth="270.0" promptText="Select first person..." />
+         <ComboBox fx:id="firstPersonComboBox" onAction="#firstPersonSelected" prefWidth="270.0" promptText="Select first person..." />
         </VBox>
         <VBox layoutX="10.0" layoutY="124.0">
             <Label text="Second person" />
-         <ComboBox fx:id="secondPersonComboBox" disable="true" prefWidth="270.0" promptText="Select second person..." />
+         <ComboBox fx:id="secondPersonComboBox" disable="true" onAction="#secondPersonSelected" prefWidth="270.0" promptText="Select second person..." />
         </VBox>
         <VBox layoutX="10.0" layoutY="67.0">
             <Label text="First person is the ... of second person" />

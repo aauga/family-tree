@@ -1,10 +1,13 @@
 package main.data;
 
+import java.util.ArrayList;
+
 public class Person {
     private final String firstName, lastName;
     private final String personalCode;
     private final String birthPlace;
     private final int birthYear;
+    private ArrayList<Person> connections;
 
     public Person(String firstName, String lastName, String personalCode, int birthYear, String birthPlace) {
         this.firstName = firstName;
@@ -12,6 +15,10 @@ public class Person {
         this.personalCode = personalCode;
         this.birthYear = birthYear;
         this.birthPlace = birthPlace;
+    }
+
+    public void createConnection(Person person) {
+        connections.add(person);
     }
 
     public String getFirstName() {
@@ -32,6 +39,10 @@ public class Person {
 
     public int getBirthYear() {
         return birthYear;
+    }
+
+    public ArrayList<Person> getConnections() {
+        return connections;
     }
 
     @Override
