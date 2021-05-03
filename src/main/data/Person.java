@@ -7,7 +7,7 @@ public class Person {
     private final String personalCode;
     private final String birthPlace;
     private final int birthYear;
-    private ArrayList<Person> connections;
+    private final ArrayList<Person> connections;
 
     public Person(String firstName, String lastName, String personalCode, int birthYear, String birthPlace) {
         this.firstName = firstName;
@@ -15,6 +15,7 @@ public class Person {
         this.personalCode = personalCode;
         this.birthYear = birthYear;
         this.birthPlace = birthPlace;
+        this.connections = new ArrayList<>();
     }
 
     public void addConnection(Person person) {

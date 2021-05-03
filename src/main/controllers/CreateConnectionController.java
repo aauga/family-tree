@@ -79,6 +79,12 @@ public class CreateConnectionController {
 
     @FXML
     public void createConnection() {
+        Person firstPerson = firstPersonComboBox.getSelectionModel().getSelectedItem();
+        Person secondPerson = secondPersonComboBox.getSelectionModel().getSelectedItem();
+
+        firstPerson.addConnection(secondPerson);
+        secondPerson.addConnection(firstPerson);
+
         // Close window
         Stage stage = (Stage) createConnectionButton.getScene().getWindow();
         stage.close();
