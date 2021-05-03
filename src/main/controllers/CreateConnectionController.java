@@ -2,8 +2,10 @@ package main.controllers;
 
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
+import javafx.stage.Stage;
 import main.data.Person;
 import main.data.Storage;
 
@@ -16,6 +18,9 @@ public class CreateConnectionController {
 
     @FXML
     private ComboBox<Person> firstPersonComboBox, secondPersonComboBox;
+
+    @FXML
+    private Button createConnectionButton;
 
     private ArrayList<Person> list;
 
@@ -40,6 +45,7 @@ public class CreateConnectionController {
         secondPersonComboBox.getSelectionModel().clearSelection();
         secondPersonComboBox.getItems().clear();
         connectionType.setDisable(true);
+        createConnectionButton.setDisable(true);
 
         Person selectedPerson = firstPersonComboBox.getSelectionModel().getSelectedItem();
         addPeopleToSecondComboBox(selectedPerson);
@@ -59,6 +65,22 @@ public class CreateConnectionController {
 
     @FXML
     public void secondPersonSelected() {
+        //If second person selected more than once, reset fields
+        connectionType.getSelectionModel().clearSelection();
+        createConnectionButton.setDisable(true);
+
         connectionType.setDisable(false);
+    }
+
+    @FXML
+    public void connectionTypeSelected() {
+        createConnectionButton.setDisable(false);
+    }
+
+    @FXML
+    public void createConnection() {
+        // Close window
+        Stage stage = (Stage) createConnectionButton.getScene().getWindow();
+        stage.close();
     }
 }

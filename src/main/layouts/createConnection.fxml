@@ -21,12 +21,12 @@
         </VBox>
         <VBox layoutX="10.0" layoutY="67.0">
             <Label text="First person is the ... of second person" />
-         <ChoiceBox fx:id="connectionType" disable="true" prefWidth="270.0" />
+         <ChoiceBox fx:id="connectionType" disable="true" onAction="#connectionTypeSelected" prefWidth="270.0" />
         </VBox>
     </VBox>
     <ButtonBar layoutX="15.0" layoutY="310.0" prefHeight="40.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0">
         <buttons>
-            <Button disable="true" mnemonicParsing="false" text="Connect" />
+            <Button fx:id="createConnectionButton" disable="true" mnemonicParsing="false" onAction="#createConnection" text="Connect" />
         </buttons>
     </ButtonBar>
 </AnchorPane>

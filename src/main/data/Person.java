@@ -17,7 +17,7 @@ public class Person {
         this.birthPlace = birthPlace;
     }
 
-    public void createConnection(Person person) {
+    public void addConnection(Person person) {
         connections.add(person);
     }
 
