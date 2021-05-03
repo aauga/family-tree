@@ -5,8 +5,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import main.data.Canvas;
 
 import java.io.IOException;
@@ -20,6 +20,7 @@ public class MainController {
         Canvas.setCanvas(canvas);
     }
 
+    @FXML
     public void showCreatePersonWindow() {
         canvas.setOnMouseClicked(mouseEvent -> {
             Canvas.setMousePosX(mouseEvent.getX());
@@ -27,9 +28,10 @@ public class MainController {
 
             Parent parent = null;
             Stage stage = new Stage();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../layouts/createPerson.fxml"));
 
             try {
-                parent = FXMLLoader.load(getClass().getResource("../layouts/createPerson.fxml"));
+                parent = loader.load();
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -38,21 +40,22 @@ public class MainController {
             stage.setScene(new Scene(parent, 300, 350));
             stage.setResizable(false);
 
-            stage.initStyle(StageStyle.UTILITY);
+            stage.initModality(Modality.APPLICATION_MODAL);
             stage.show();
         });
     }
 
     @FXML
     public void showCreateConnectionWindow() throws IOException {
-        Parent parent = FXMLLoader.load(getClass().getResource("../layouts/createConnection.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../layouts/createConnection.fxml"));
+        Parent parent = loader.load();
         Stage stage = new Stage();
 
         stage.setTitle("Create a Connection");
         stage.setScene(new Scene(parent, 300, 300));
         stage.setResizable(false);
 
-        stage.initStyle(StageStyle.UTILITY);
+        stage.initModality(Modality.APPLICATION_MODAL);
         stage.show();
     }
 

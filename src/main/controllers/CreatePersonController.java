@@ -82,7 +82,6 @@ public class CreatePersonController {
         }));
     }
 
-    @FXML
     private void checkIfBirthYearValid() {
         String birthYearStr = birthYearTextField.getText();
 
