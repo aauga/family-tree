@@ -17,7 +17,11 @@ public class CreateConnectionController {
     @FXML
     private ComboBox<Person> firstPersonComboBox, secondPersonComboBox;
 
+    private ArrayList<Person> list;
+
     public void initialize() {
+        list = Storage.getPeopleArray();
+
         connectionType.setItems(FXCollections.observableArrayList(
                 "Father", "Mother", "Child", "Grandparent", "Great-grandparent", "Other"));
 
@@ -25,8 +29,6 @@ public class CreateConnectionController {
     }
 
     private void addPeopleToFirstComboBox() {
-        ArrayList<Person> list = Storage.getPeopleArray();
-
         for(Person person : list) {
             firstPersonComboBox.getItems().add(person);
         }
@@ -34,20 +36,25 @@ public class CreateConnectionController {
 
     @FXML
     public void firstPersonSelected() {
-        int selectedId = firstPersonComboBox.getSelectionModel().getSelectedIndex();
+        //If first person selected more than once, reset fields
+        secondPersonComboBox.getSelectionModel().clearSelection();
+        secondPersonComboBox.getItems().clear();
+        connectionType.setDisable(true);
 
-        ArrayList<Person> list = Storage.getPeopleArray();
-        ArrayList<Person> connections = list.get(selectedId).getConnections();
-
-        // Remove the person and his connections from available options
-        list.remove(selectedId);
-        list.remove(connections);
-
-        for(Person person : list) {
-            secondPersonComboBox.getItems().add(person);
-        }
+        Person selectedPerson = firstPersonComboBox.getSelectionModel().getSelectedItem();
+        addPeopleToSecondComboBox(selectedPerson);
 
         secondPersonComboBox.setDisable(false);
+    }
+
+    private void addPeopleToSecondComboBox(Person selectedPerson) {
+        ArrayList<Person> connections = selectedPerson.getConnections();
+
+        for(Person person : list) {
+            if(person != selectedPerson && (connections == null || !connections.contains(person))) {
+                secondPersonComboBox.getItems().add(person);
+            }
+        }
     }
 
     @FXML
