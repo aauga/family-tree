@@ -10,7 +10,7 @@ public class Node {
     private final Ellipse ellipse;
 
     private final Person person;
-    private double posX, posY;
+    private final double posX, posY;
 
     public Node(Person person, double posX, double posY) {
         this.person = person;
@@ -57,13 +57,5 @@ public class Node {
 
     public double getPosY() {
         return posY;
-    }
-
-    public void setPosX(double posX) {
-        this.posX = posX;
-    }
-
-    public void setPosY(double posY) {
-        this.posY = posY;
     }
 }
