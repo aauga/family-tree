@@ -1,7 +1,6 @@
 package main.data;
 
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.shape.Line;
 
 public class Canvas {
     private static AnchorPane canvas;
@@ -13,7 +12,7 @@ public class Canvas {
     }
 
     public static void addLine(ConnectionLine connectionLine) {
-        canvas.getChildren().add(connectionLine.getLine());
+        canvas.getChildren().add(0, connectionLine.getLine());
     }
 
     public static double getMousePosX() {
