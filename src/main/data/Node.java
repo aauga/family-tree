@@ -10,7 +10,7 @@ public class Node {
     private final Ellipse ellipse;
 
     private final Person person;
-    private final double posX, posY;
+    private double posX, posY;
 
     public Node(Person person, double posX, double posY) {
         this.person = person;
@@ -21,6 +21,8 @@ public class Node {
         ellipse = new Ellipse();
 
         createNodeLayout();
+
+        Canvas.addNode(this);
     }
 
     private void createNodeLayout() {
@@ -47,5 +49,21 @@ public class Node {
 
     public Text getText() {
         return text;
+    }
+
+    public double getPosX() {
+        return posX;
+    }
+
+    public double getPosY() {
+        return posY;
+    }
+
+    public void setPosX(double posX) {
+        this.posX = posX;
+    }
+
+    public void setPosY(double posY) {
+        this.posY = posY;
     }
 }

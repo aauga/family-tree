@@ -1,17 +1,19 @@
 package main.data;
 
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Ellipse;
-import javafx.scene.text.Text;
+import javafx.scene.shape.Line;
 
 public class Canvas {
     private static AnchorPane canvas;
     private static double mousePosX, mousePosY;
 
-    public static void addToCanvas(Node node) {
+    public static void addNode(Node node) {
         canvas.getChildren().add(node.getEllipse());
         canvas.getChildren().add(node.getText());
+    }
+
+    public static void addLine(ConnectionLine connectionLine) {
+        canvas.getChildren().add(connectionLine.getLine());
     }
 
     public static double getMousePosX() {

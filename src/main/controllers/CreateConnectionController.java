@@ -6,6 +6,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
+import main.data.Canvas;
+import main.data.ConnectionLine;
 import main.data.Person;
 import main.data.Storage;
 
@@ -84,6 +86,9 @@ public class CreateConnectionController {
 
         firstPerson.addConnection(secondPerson);
         secondPerson.addConnection(firstPerson);
+
+        ConnectionLine connectionLine = new ConnectionLine(firstPerson, secondPerson);
+        Canvas.addLine(connectionLine);
 
         // Close window
         Stage stage = (Stage) createConnectionButton.getScene().getWindow();

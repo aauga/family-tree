@@ -7,6 +7,8 @@ public class Person {
     private final String personalCode;
     private final String birthPlace;
     private final int birthYear;
+
+    private final Node node;
     private final ArrayList<Person> connections;
 
     public Person(String firstName, String lastName, String personalCode, int birthYear, String birthPlace) {
@@ -16,6 +18,7 @@ public class Person {
         this.birthYear = birthYear;
         this.birthPlace = birthPlace;
         this.connections = new ArrayList<>();
+        node = new Node(this, Canvas.getMousePosX(), Canvas.getMousePosY());
     }
 
     public void addConnection(Person person) {
@@ -34,12 +37,8 @@ public class Person {
         return personalCode;
     }
 
-    public String getBirthPlace() {
-        return birthPlace;
-    }
-
-    public int getBirthYear() {
-        return birthYear;
+    public Node getNode() {
+        return node;
     }
 
     public ArrayList<Person> getConnections() {
