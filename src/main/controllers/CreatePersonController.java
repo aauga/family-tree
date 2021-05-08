@@ -9,7 +9,6 @@ import javafx.stage.Stage;
 import main.data.Canvas;
 import main.data.Person;
 import main.data.Storage;
-import main.data.Node;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -166,6 +165,7 @@ public class CreatePersonController {
 
         Person person = new Person(firstName, lastName, personalCode, birthYear, birthPlace);
         Storage.addPerson(person);
+        Canvas.addNode(person);
 
         // Close window
         Stage stage = (Stage) addPersonButton.getScene().getWindow();

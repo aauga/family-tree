@@ -21,8 +21,6 @@ public class Node {
         ellipse = new Ellipse();
 
         createNodeLayout();
-
-        Canvas.addNode(this);
     }
 
     private void createNodeLayout() {

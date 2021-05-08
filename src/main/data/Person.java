@@ -25,6 +25,10 @@ public class Person {
         connections.add(person);
     }
 
+    public void removeConnection(Person person) {
+        connections.remove(person);
+    }
+
     public String getFirstName() {
         return firstName;
     }

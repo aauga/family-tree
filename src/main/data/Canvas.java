@@ -1,12 +1,16 @@
 package main.data;
 
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.shape.Ellipse;
+import javafx.scene.text.Text;
 
 public class Canvas {
     private static AnchorPane canvas;
     private static double mousePosX, mousePosY;
 
-    public static void addNode(Node node) {
+    public static void addNode(Person person) {
+        Node node = person.getNode();
+
         canvas.getChildren().add(node.getEllipse());
         canvas.getChildren().add(node.getText());
     }

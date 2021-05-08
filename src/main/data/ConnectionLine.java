@@ -6,14 +6,18 @@ import javafx.scene.shape.Line;
 import java.util.Random;
 
 public class ConnectionLine {
-    private final Line line;
+    private Line line;
     private final Person firstPerson, secondPerson;
 
     public ConnectionLine(Person firstPerson, Person secondPerson) {
-        line = new Line();
-
         this.firstPerson = firstPerson;
         this.secondPerson = secondPerson;
+
+        line = new Line();
+
+        line.setOnMouseClicked(mouseEvent -> {
+            removeLine();
+        });
 
         createLine();
     }
@@ -24,6 +28,12 @@ public class ConnectionLine {
         line.setEndX(secondPerson.getNode().getPosX());
         line.setEndY(secondPerson.getNode().getPosY());
         line.setStroke(randomColor());
+    }
+
+    public void removeLine() {
+        firstPerson.removeConnection(secondPerson);
+        secondPerson.removeConnection(firstPerson);
+        line = null;
     }
 
     /**
