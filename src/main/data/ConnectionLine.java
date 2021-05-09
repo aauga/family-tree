@@ -36,6 +36,7 @@ public class ConnectionLine {
         firstPerson.removeConnection(secondPerson);
         secondPerson.removeConnection(firstPerson);
         Canvas.removeLine(line);
+        Storage.removeLine(this);
         line = null;
     }
 

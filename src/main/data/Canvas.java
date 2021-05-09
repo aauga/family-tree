@@ -41,7 +41,7 @@ public class Canvas {
     /**
      * Function removes all connection lines which were connected to a node
      *
-     * @param person Person whose connections will be removed
+     * @param person Reference to a person whose connections will be removed
      */
     public static void removeLinesConnectedToNode(Person person) {
         ArrayList<ConnectionLine> lines = Storage.getConnectionLineArray();

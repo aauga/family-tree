@@ -50,6 +50,7 @@ public class Node {
             if(mouseEvent.getClickCount() == 2) {
                 Canvas.removeNode(this);
                 Canvas.removeLinesConnectedToNode(person);
+                Storage.removePerson(person);
             }
         });
     }

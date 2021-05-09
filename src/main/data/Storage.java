@@ -10,8 +10,16 @@ public class Storage {
         people.add(person);
     }
 
+    public static void removePerson(Person person) {
+        people.remove(person);
+    }
+
     public static void addLine(ConnectionLine line) {
         lines.add(line);
+    }
+
+    public static void removeLine(ConnectionLine line) {
+        lines.remove(line);
     }
 
     // Getters
