@@ -88,6 +88,7 @@ public class CreateConnectionController {
         secondPerson.addConnection(firstPerson);
 
         ConnectionLine connectionLine = new ConnectionLine(firstPerson, secondPerson);
+        Storage.addLine(connectionLine);
         Canvas.addLine(connectionLine);
 
         // Close window

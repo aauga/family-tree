@@ -37,6 +37,10 @@ public class Canvas {
         canvas.getChildren().remove(line);
     }
 
+    public static void removeLinesConnectedToNode(Person person) {
+
+    }
+
     // Element click
 
     public static void handleClickOnElement() {
