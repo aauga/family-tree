@@ -13,7 +13,9 @@ public class Canvas {
 
     // Used for checking when an user clicks on a node or connection line
     private static boolean clickedOnElement;
+
     private static Person selectedPerson;
+    private static ConnectionLine selectedLine;
 
     // Nodes
 
@@ -86,6 +88,10 @@ public class Canvas {
         return selectedPerson;
     }
 
+    public static ConnectionLine getSelectedLine() {
+        return selectedLine;
+    }
+
     // Setters
 
     public static void setCanvas(AnchorPane canvas) {
@@ -102,5 +108,9 @@ public class Canvas {
 
     public static void setSelectedPerson(Person person) {
         selectedPerson = person;
+    }
+
+    public static void setSelectedLine(ConnectionLine line) {
+        selectedLine = line;
     }
 }

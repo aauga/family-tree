@@ -1,8 +1,15 @@
 package main.data;
 
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Line;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 import java.util.Random;
 
 public class ConnectionLine {
@@ -15,12 +22,34 @@ public class ConnectionLine {
 
         line = new Line();
 
+        handleMousePressed();
+        createLine();
+    }
+
+    private void handleMousePressed() {
         line.setOnMouseClicked(mouseEvent -> {
             Canvas.handleClickOnElement();
-            removeLine();
-        });
+            Canvas.setSelectedLine(this);
 
-        createLine();
+            try {
+                showEditConnectionWindow();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+    }
+
+    private void showEditConnectionWindow() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../layouts/editConnection.fxml"));
+        Parent parent = loader.load();
+        Stage stage = new Stage();
+
+        stage.setTitle("Edit a Connection");
+        stage.setScene(new Scene(parent, 300, 300));
+        stage.setResizable(false);
+
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.show();
     }
 
     private void createLine() {
@@ -29,7 +58,7 @@ public class ConnectionLine {
         line.setEndX(secondPerson.getNode().getPosX());
         line.setEndY(secondPerson.getNode().getPosY());
         line.setStroke(randomColor());
-        line.setStrokeWidth(2.0);
+        line.setStrokeWidth(3.0);
     }
 
     public void removeLine() {
@@ -55,10 +84,6 @@ public class ConnectionLine {
         return Color.color(r, g, b);
     }
 
-    public Line getLine() {
-        return line;
-    }
-
     /**
      * Function checks whether a line is connected to a person or not
      *
@@ -67,5 +92,9 @@ public class ConnectionLine {
      */
     public boolean isConnectedTo(Person person) {
         return person == firstPerson || person == secondPerson;
+    }
+
+    public Line getLine() {
+        return line;
     }
 }

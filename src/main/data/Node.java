@@ -52,9 +52,9 @@ public class Node {
     private void handleMousePressed() {
         ellipse.setOnMousePressed(mouseEvent -> {
             Canvas.handleClickOnElement();
+            Canvas.setSelectedPerson(person);
 
             try {
-                Canvas.setSelectedPerson(person);
                 showEditPersonWindow();
             } catch (IOException e) {
                 e.printStackTrace();
