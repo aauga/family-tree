@@ -11,23 +11,26 @@
         </font>
     </Label>
     <VBox layoutX="15.0" layoutY="65.0" spacing="15.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="65.0">
-        <VBox>
-             <Label text="First person" />
-         <ComboBox fx:id="firstPersonComboBox" onAction="#firstPersonSelected" prefWidth="270.0" promptText="Select first person..." />
-        </VBox>
-        <VBox layoutX="10.0" layoutY="124.0">
-            <Label text="Second person" />
-         <ComboBox fx:id="secondPersonComboBox" onAction="#secondPersonSelected" prefWidth="270.0" promptText="Select second person..." />
+        <VBox spacing="10.0">
+             <Label fx:id="firstPersonLabel" text="First person">
+            <font>
+               <Font name="System Bold" size="12.0" />
+            </font></Label>
+         <Label layoutX="10.0" layoutY="10.0" text="is a ... (connection type) of" />
+            <Label fx:id="secondPersonLabel" text="Second person">
+            <font>
+               <Font name="System Bold" size="12.0" />
+            </font></Label>
         </VBox>
         <VBox layoutX="10.0" layoutY="67.0">
-            <Label text="First person is the ... of second person" />
-         <ChoiceBox fx:id="connectionType" onAction="#connectionTypeSelected" prefWidth="270.0" />
+            <Label text="Connection Type" />
+         <ChoiceBox fx:id="connectionType" prefWidth="270.0" />
         </VBox>
     </VBox>
     <ButtonBar layoutX="15.0" layoutY="310.0" prefHeight="40.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0">
         <buttons>
             <Button fx:id="deleteConnectionButton" mnemonicParsing="false" onAction="#deleteConnection" text="Delete" />
-         <Button fx:id="editConnectionButton" disable="true" layoutX="205.0" layoutY="18.0" mnemonicParsing="false" onAction="#editConnection" text="Edit" />
+         <Button fx:id="editConnectionButton" layoutX="205.0" layoutY="18.0" mnemonicParsing="false" onAction="#editConnection" text="Edit" />
         </buttons>
     </ButtonBar>
 </AnchorPane>

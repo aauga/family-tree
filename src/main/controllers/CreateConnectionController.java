@@ -83,11 +83,12 @@ public class CreateConnectionController {
     public void createConnection() {
         Person firstPerson = firstPersonComboBox.getSelectionModel().getSelectedItem();
         Person secondPerson = secondPersonComboBox.getSelectionModel().getSelectedItem();
+        String connection = connectionType.getValue();
 
         firstPerson.addConnection(secondPerson);
         secondPerson.addConnection(firstPerson);
 
-        ConnectionLine connectionLine = new ConnectionLine(firstPerson, secondPerson);
+        ConnectionLine connectionLine = new ConnectionLine(firstPerson, secondPerson, connection);
         Storage.addLine(connectionLine);
         Canvas.addLine(connectionLine);
 

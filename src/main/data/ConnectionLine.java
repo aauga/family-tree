@@ -15,10 +15,12 @@ import java.util.Random;
 public class ConnectionLine {
     private Line line;
     private Person firstPerson, secondPerson;
+    private String connectionType;
 
-    public ConnectionLine(Person firstPerson, Person secondPerson) {
+    public ConnectionLine(Person firstPerson, Person secondPerson, String connectionType) {
         this.firstPerson = firstPerson;
         this.secondPerson = secondPerson;
+        this.connectionType = connectionType;
 
         line = new Line();
 
@@ -61,14 +63,6 @@ public class ConnectionLine {
         line.setStrokeWidth(3.0);
     }
 
-    public void removeLine() {
-        firstPerson.removeConnection(secondPerson);
-        secondPerson.removeConnection(firstPerson);
-        Canvas.removeLine(line);
-        Storage.removeLine(this);
-        line = null;
-    }
-
     /**
      * Function generates random colors
      *
@@ -106,11 +100,11 @@ public class ConnectionLine {
         return secondPerson;
     }
 
-    public void setFirstPerson(Person person) {
-        firstPerson = person;
+    public String getConnectionType() {
+        return connectionType;
     }
 
-    public void setSecondPerson(Person person) {
-        secondPerson = person;
+    public void setConnectionType(String connectionType) {
+        this.connectionType = connectionType;
     }
 }
