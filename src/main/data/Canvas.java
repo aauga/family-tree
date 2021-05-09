@@ -22,6 +22,11 @@ public class Canvas {
         canvas.getChildren().add(node.getText());
     }
 
+    public static void removeNode(Node node) {
+        canvas.getChildren().remove(node.getEllipse());
+        canvas.getChildren().remove(node.getText());
+    }
+
     // Connection lines
 
     public static void addLine(ConnectionLine connectionLine) {

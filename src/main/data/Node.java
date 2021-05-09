@@ -19,6 +19,8 @@ public class Node {
 
         text = new Text();
         ellipse = new Ellipse();
+
+        handleMousePressed();
         
         createNodeLayout();
     }
@@ -39,6 +41,17 @@ public class Node {
         ellipse.setRadiusX(textWidth * 0.8);
         ellipse.setRadiusY(textHeight);
         ellipse.setFill(Color.GREEN);
+    }
+
+    private void handleMousePressed() {
+        ellipse.setOnMousePressed(mouseEvent -> {
+            Canvas.handleClickOnElement();
+
+            if(mouseEvent.getClickCount() == 2) {
+                Canvas.removeNode(this);
+                //Canvas.removeLinesConnectedToNode(person);
+            }
+        });
     }
 
     public Ellipse getEllipse() {
