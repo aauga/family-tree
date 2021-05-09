@@ -3,6 +3,7 @@ package main.data;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Line;
 
+import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -37,8 +38,19 @@ public class Canvas {
         canvas.getChildren().remove(line);
     }
 
+    /**
+     * Function removes all connection lines which were connected to a node
+     *
+     * @param person Person whose connections will be removed
+     */
     public static void removeLinesConnectedToNode(Person person) {
+        ArrayList<ConnectionLine> lines = Storage.getConnectionLineArray();
 
+        for(ConnectionLine line : lines) {
+            if(line.isConnectedTo(person)) {
+                removeLine(line.getLine());
+            }
+        }
     }
 
     // Element click

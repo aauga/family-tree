@@ -57,4 +57,14 @@ public class ConnectionLine {
     public Line getLine() {
         return line;
     }
+
+    /**
+     * Function checks whether a line is connected to a person or not
+     *
+     * @param person Person which will be compared to the people connected by the line
+     * @return True if this line is connected to a person and false otherwise
+     */
+    public boolean isConnectedTo(Person person) {
+        return person == firstPerson || person == secondPerson;
+    }
 }
