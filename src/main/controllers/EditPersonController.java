@@ -27,7 +27,7 @@ public class EditPersonController {
     private Label personalCodeErrorLabel;
 
     @FXML
-    private Button editPersonButton;
+    private Button deletePersonButton, editPersonButton;
 
     private Person selectedPerson;
 
@@ -42,7 +42,7 @@ public class EditPersonController {
     }
 
     @FXML
-    private void formatFirstNameTextField() {
+    public void formatFirstNameTextField() {
         firstNameTextField.setTextFormatter(new TextFormatter<>(change -> {
             String newText = change.getControlNewText();
 
@@ -55,7 +55,7 @@ public class EditPersonController {
     }
 
     @FXML
-    private void formatLastNameTextField() {
+    public void formatLastNameTextField() {
         lastNameTextField.setTextFormatter(new TextFormatter<>(change -> {
             String newText = change.getControlNewText();
 
@@ -68,7 +68,7 @@ public class EditPersonController {
     }
 
     @FXML
-    private void formatPersonalCodeTextField() {
+    public void formatPersonalCodeTextField() {
         personalCodeTextField.setTextFormatter(new TextFormatter<>(change -> {
             String newText = change.getControlNewText();
 
@@ -81,7 +81,7 @@ public class EditPersonController {
     }
 
     @FXML
-    private void formatBirthYearTextField() {
+    public void formatBirthYearTextField() {
         birthYearTextField.setTextFormatter(new TextFormatter<>(change -> {
             String newText = change.getControlNewText();
 
@@ -107,7 +107,7 @@ public class EditPersonController {
     }
 
     @FXML
-    private void formatBirthPlaceTextField() {
+    public void formatBirthPlaceTextField() {
         birthPlaceTextField.setTextFormatter(new TextFormatter<>(change -> {
             String newText = change.getControlNewText();
 
@@ -162,13 +162,13 @@ public class EditPersonController {
 
     // Function enables the "Add Person" button if all fields are filled in correctly and disables it if not.
     @FXML
-    private void checkFields() {
+    public void checkFields() {
         checkIfBirthYearValid();
         editPersonButton.setDisable(!personalCodeValid() || textFieldsEmpty());
     }
 
     @FXML
-    private void editPerson() {
+    public void editPerson() {
         String firstName = firstNameTextField.getText();
         String lastName = lastNameTextField.getText();
         String personalCode = personalCodeTextField.getText();
@@ -185,5 +185,17 @@ public class EditPersonController {
         // Close window
         Stage stage = (Stage) editPersonButton.getScene().getWindow();
         stage.close();
+    }
+
+    @FXML
+    public void deletePerson() {
+        Canvas.removeNode(selectedPerson.getNode());
+        Canvas.removeLinesConnectedToNode(selectedPerson);
+        Storage.removePerson(selectedPerson);
+
+        // Close window
+        Stage stage = (Stage) deletePersonButton.getScene().getWindow();
+        stage.close();
+
     }
 }

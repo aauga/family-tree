@@ -30,7 +30,7 @@ public class CreatePersonController {
     private Button addPersonButton;
 
     @FXML
-    private void formatFirstNameTextField() {
+    public void formatFirstNameTextField() {
         firstNameTextField.setTextFormatter(new TextFormatter<>(change -> {
             String newText = change.getControlNewText();
 
@@ -43,7 +43,7 @@ public class CreatePersonController {
     }
 
     @FXML
-    private void formatLastNameTextField() {
+    public void formatLastNameTextField() {
         lastNameTextField.setTextFormatter(new TextFormatter<>(change -> {
             String newText = change.getControlNewText();
 
@@ -56,7 +56,7 @@ public class CreatePersonController {
     }
 
     @FXML
-    private void formatPersonalCodeTextField() {
+    public void formatPersonalCodeTextField() {
         personalCodeTextField.setTextFormatter(new TextFormatter<>(change -> {
             String newText = change.getControlNewText();
 
@@ -69,7 +69,7 @@ public class CreatePersonController {
     }
 
     @FXML
-    private void formatBirthYearTextField() {
+    public void formatBirthYearTextField() {
         birthYearTextField.setTextFormatter(new TextFormatter<>(change -> {
             String newText = change.getControlNewText();
 
@@ -95,7 +95,7 @@ public class CreatePersonController {
     }
 
     @FXML
-    private void formatBirthPlaceTextField() {
+    public void formatBirthPlaceTextField() {
         birthPlaceTextField.setTextFormatter(new TextFormatter<>(change -> {
             String newText = change.getControlNewText();
 
@@ -150,13 +150,13 @@ public class CreatePersonController {
 
     // Function enables the "Add Person" button if all fields are filled in correctly and disables it if not.
     @FXML
-    private void checkFields() {
+    public void checkFields() {
         checkIfBirthYearValid();
         addPersonButton.setDisable(!personalCodeValid() || textFieldsEmpty());
     }
 
     @FXML
-    private void addPersonToStorage() {
+    public void addPersonToStorage() {
         String firstName = firstNameTextField.getText();
         String lastName = lastNameTextField.getText();
         String personalCode = personalCodeTextField.getText();

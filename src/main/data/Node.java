@@ -53,18 +53,11 @@ public class Node {
         ellipse.setOnMousePressed(mouseEvent -> {
             Canvas.handleClickOnElement();
 
-            if(mouseEvent.getClickCount() == 2) {
-                Canvas.removeNode(this);
-                Canvas.removeLinesConnectedToNode(person);
-                Storage.removePerson(person);
-            }
-            else {
-                try {
-                    Canvas.setSelectedPerson(person);
-                    showEditPersonWindow();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+            try {
+                Canvas.setSelectedPerson(person);
+                showEditPersonWindow();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         });
     }
