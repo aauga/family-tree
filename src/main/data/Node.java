@@ -19,7 +19,7 @@ public class Node {
 
         text = new Text();
         ellipse = new Ellipse();
-
+        
         createNodeLayout();
     }
 

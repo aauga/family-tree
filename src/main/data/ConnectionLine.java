@@ -16,6 +16,7 @@ public class ConnectionLine {
         line = new Line();
 
         line.setOnMouseClicked(mouseEvent -> {
+            Canvas.handleClickOnElement();
             removeLine();
         });
 
@@ -28,11 +29,13 @@ public class ConnectionLine {
         line.setEndX(secondPerson.getNode().getPosX());
         line.setEndY(secondPerson.getNode().getPosY());
         line.setStroke(randomColor());
+        line.setStrokeWidth(2.0);
     }
 
     public void removeLine() {
         firstPerson.removeConnection(secondPerson);
         secondPerson.removeConnection(firstPerson);
+        Canvas.removeLine(line);
         line = null;
     }
 

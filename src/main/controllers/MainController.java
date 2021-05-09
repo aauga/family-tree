@@ -23,25 +23,27 @@ public class MainController {
     @FXML
     public void showCreatePersonWindow() {
         canvas.setOnMouseClicked(mouseEvent -> {
-            Canvas.setMousePosX(mouseEvent.getX());
-            Canvas.setMousePosY(mouseEvent.getY());
+            if(!Canvas.getClickedOnElement()) {
+                Canvas.setMousePosX(mouseEvent.getX());
+                Canvas.setMousePosY(mouseEvent.getY());
 
-            Parent parent = null;
-            Stage stage = new Stage();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../layouts/createPerson.fxml"));
+                Parent parent = null;
+                Stage stage = new Stage();
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("../layouts/createPerson.fxml"));
 
-            try {
-                parent = loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
+                try {
+                    parent = loader.load();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                stage.setTitle("Add a Person");
+                stage.setScene(new Scene(parent, 300, 350));
+                stage.setResizable(false);
+
+                stage.initModality(Modality.APPLICATION_MODAL);
+                stage.show();
             }
-
-            stage.setTitle("Add a Person");
-            stage.setScene(new Scene(parent, 300, 350));
-            stage.setResizable(false);
-
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.show();
         });
     }
 
