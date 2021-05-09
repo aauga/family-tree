@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane onMousePressed="#checkFields" prefHeight="350.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.controllers.EditPersonController">
+    <Label layoutX="66.0" layoutY="73.0" text="Edit a Person" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="15.0">
+        <font>
+          <Font name="Arial Bold" size="24.0" />
+        </font>
+    </Label>
+    <VBox layoutX="15.0" layoutY="65.0" spacing="15.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="65.0">
+        <HBox spacing="15.0">
+            <VBox>
+                <Label text="First Name" />
+                <TextField fx:id="firstNameTextField" onKeyPressed="#formatFirstNameTextField" onMousePressed="#checkFields" />
+            </VBox>
+            <VBox>
+                <Label text="Last Name" />
+                <TextField fx:id="lastNameTextField" onKeyPressed="#formatLastNameTextField" onMousePressed="#checkFields" />
+            </VBox>
+        </HBox>
+        <VBox>
+            <HBox spacing="10.0">
+                <Label text="Personal Code" />
+                <Label fx:id="personalCodeErrorLabel" text="Too short!" textFill="RED" visible="false" />
+            </HBox>
+            <TextField fx:id="personalCodeTextField" onKeyPressed="#formatPersonalCodeTextField" onMousePressed="#checkFields" />
+        </VBox>
+        <VBox layoutX="10.0" layoutY="67.0">
+            <Label text="Year of Birth" />
+            <TextField fx:id="birthYearTextField" onKeyPressed="#formatBirthYearTextField" onMousePressed="#checkFields" />
+        </VBox>
+        <VBox layoutX="10.0" layoutY="124.0">
+            <Label text="Place of Birth" />
+            <TextField fx:id="birthPlaceTextField" onKeyPressed="#formatBirthPlaceTextField" onMousePressed="#checkFields" />
+        </VBox>
+    </VBox>
+   <ButtonBar layoutX="15.0" layoutY="310.0" onMousePressed="#checkFields" prefHeight="40.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0">
+     <buttons>
+       <Button fx:id="editPersonButton" disable="true" mnemonicParsing="false" onAction="#editPerson" onMousePressed="#checkFields" text="Edit" />
+     </buttons>
+   </ButtonBar>
+</AnchorPane>

@@ -1,8 +1,15 @@
 package main.data;
 
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Ellipse;
 import javafx.scene.text.Text;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class Node {
 
@@ -52,7 +59,27 @@ public class Node {
                 Canvas.removeLinesConnectedToNode(person);
                 Storage.removePerson(person);
             }
+            else {
+                try {
+                    showEditPersonWindow();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
         });
+    }
+
+    private void showEditPersonWindow() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../layouts/editPerson.fxml"));
+        Parent parent = loader.load();
+        Stage stage = new Stage();
+
+        stage.setTitle("Edit a Person");
+        stage.setScene(new Scene(parent, 300, 350));
+        stage.setResizable(false);
+
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.show();
     }
 
     public Ellipse getEllipse() {
