@@ -40,7 +40,7 @@
    <ButtonBar layoutX="15.0" layoutY="310.0" onMousePressed="#checkFields" prefHeight="40.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0">
      <buttons>
        <Button fx:id="deletePersonButton" mnemonicParsing="false" onAction="#deletePerson" text="Delete" />
-         <Button fx:id="editPersonButton1" disable="true" layoutX="205.0" layoutY="18.0" mnemonicParsing="false" onAction="#editPerson" onMousePressed="#checkFields" text="Edit" />
+         <Button fx:id="editPersonButton" disable="true" layoutX="205.0" layoutY="18.0" mnemonicParsing="false" onAction="#editPerson" onMousePressed="#checkFields" text="Edit" />
      </buttons>
    </ButtonBar>
 </AnchorPane>

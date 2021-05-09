@@ -1,5 +1,6 @@
 package main.data;
 
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -13,8 +14,8 @@ import java.io.IOException;
 import java.util.Random;
 
 public class ConnectionLine {
-    private Line line;
-    private Person firstPerson, secondPerson;
+    private final Line line;
+    private final Person firstPerson, secondPerson;
     private String connectionType;
 
     public ConnectionLine(Person firstPerson, Person secondPerson, String connectionType) {
@@ -30,7 +31,6 @@ public class ConnectionLine {
 
     private void handleMousePressed() {
         line.setOnMouseClicked(mouseEvent -> {
-            Canvas.handleClickOnElement();
             Canvas.setSelectedLine(this);
 
             try {
@@ -52,6 +52,7 @@ public class ConnectionLine {
 
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.show();
+        stage.setOnCloseRequest(windowEvent -> Canvas.setClickedOnElement(false));
     }
 
     private void createLine() {

@@ -26,6 +26,8 @@ public class EditConnectionController {
     private Person firstPerson, secondPerson;
 
     public void initialize() {
+        Canvas.setClickedOnElement(true);
+
         connectionType.setItems(FXCollections.observableArrayList(
                 "Father", "Mother", "Child", "Grandparent", "Great-grandparent", "Other"));
 
@@ -45,6 +47,8 @@ public class EditConnectionController {
         String connection = connectionType.getValue();
         selectedLine.setConnectionType(connection);
 
+        Canvas.setClickedOnElement(false);
+
         // Close window
         Stage stage = (Stage) editConnectionButton.getScene().getWindow();
         stage.close();
@@ -57,6 +61,8 @@ public class EditConnectionController {
 
         Canvas.removeLine(selectedLine.getLine());
         Storage.removeLine(selectedLine);
+
+        Canvas.setClickedOnElement(false);
 
         // Close window
         Stage stage = (Stage) deleteConnectionButton.getScene().getWindow();

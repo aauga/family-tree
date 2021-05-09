@@ -4,8 +4,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Line;
 
 import java.util.ArrayList;
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class Canvas {
     private static AnchorPane canvas;
@@ -54,22 +52,6 @@ public class Canvas {
         }
     }
 
-    // Element click
-
-    public static void handleClickOnElement() {
-        clickedOnElement = true;
-
-        // Reset variable to false after 0.1s
-        Timer timer = new Timer();
-
-        timer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                clickedOnElement = false;
-            }
-        }, 100);
-    }
-
     // Getters
 
     public static double getMousePosX() {
@@ -104,6 +86,10 @@ public class Canvas {
 
     public static void setMousePosY(double mousePosY) {
         Canvas.mousePosY = mousePosY;
+    }
+
+    public static void setClickedOnElement(boolean state) {
+        clickedOnElement = state;
     }
 
     public static void setSelectedPerson(Person person) {

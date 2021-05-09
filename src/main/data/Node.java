@@ -51,7 +51,6 @@ public class Node {
 
     private void handleMousePressed() {
         ellipse.setOnMousePressed(mouseEvent -> {
-            Canvas.handleClickOnElement();
             Canvas.setSelectedPerson(person);
 
             try {
@@ -73,6 +72,7 @@ public class Node {
 
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.show();
+        stage.setOnCloseRequest(windowEvent -> Canvas.setClickedOnElement(false));
     }
 
     public void updateInformation(Person person) {
