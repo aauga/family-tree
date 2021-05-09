@@ -3,10 +3,10 @@ package main.data;
 import java.util.ArrayList;
 
 public class Person {
-    private final String firstName, lastName;
-    private final String personalCode;
-    private final String birthPlace;
-    private final int birthYear;
+    private String firstName, lastName;
+    private String personalCode;
+    private String birthPlace;
+    private int birthYear;
 
     private final Node node;
     private final ArrayList<Person> connections;
@@ -29,6 +29,10 @@ public class Person {
         connections.remove(person);
     }
 
+    public void updateNode() {
+        node.updateInformation(this);
+    }
+
     public String getFirstName() {
         return firstName;
     }
@@ -41,12 +45,40 @@ public class Person {
         return personalCode;
     }
 
+    public int getBirthYear() {
+        return birthYear;
+    }
+
+    public String getBirthPlace() {
+        return birthPlace;
+    }
+
     public Node getNode() {
         return node;
     }
 
     public ArrayList<Person> getConnections() {
         return connections;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public void setPersonalCode(String personalCode) {
+        this.personalCode = personalCode;
+    }
+
+    public void setBirthYear(int birthYear) {
+        this.birthYear = birthYear;
+    }
+
+    public void setBirthPlace(String birthPlace) {
+        this.birthPlace = birthPlace;
     }
 
     @Override

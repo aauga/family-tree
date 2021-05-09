@@ -13,12 +13,11 @@ public class Canvas {
 
     // Used for checking when an user clicks on a node or connection line
     private static boolean clickedOnElement;
+    private static Person selectedPerson;
 
     // Nodes
 
-    public static void addNode(Person person) {
-        Node node = person.getNode();
-
+    public static void addNode(Node node) {
         canvas.getChildren().add(node.getEllipse());
         canvas.getChildren().add(node.getText());
     }
@@ -83,6 +82,10 @@ public class Canvas {
         return clickedOnElement;
     }
 
+    public static Person getSelectedPerson() {
+        return selectedPerson;
+    }
+
     // Setters
 
     public static void setCanvas(AnchorPane canvas) {
@@ -95,5 +98,9 @@ public class Canvas {
 
     public static void setMousePosY(double mousePosY) {
         Canvas.mousePosY = mousePosY;
+    }
+
+    public static void setSelectedPerson(Person person) {
+        selectedPerson = person;
     }
 }

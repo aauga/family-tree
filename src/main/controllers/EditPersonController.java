@@ -13,7 +13,7 @@ import main.data.Storage;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-public class CreatePersonController {
+public class EditPersonController {
     // Constants
     private static final int NAME_MAX_LENGTH = 16;
     private static final int PERSONAL_CODE_LENGTH = 11;
@@ -27,7 +27,19 @@ public class CreatePersonController {
     private Label personalCodeErrorLabel;
 
     @FXML
-    private Button addPersonButton;
+    private Button editPersonButton;
+
+    private Person selectedPerson;
+
+    public void initialize() {
+        selectedPerson = Canvas.getSelectedPerson();
+
+        firstNameTextField.setText(selectedPerson.getFirstName());
+        lastNameTextField.setText(selectedPerson.getLastName());
+        personalCodeTextField.setText(selectedPerson.getPersonalCode());
+        birthYearTextField.setText(Integer.toString(selectedPerson.getBirthYear()));
+        birthPlaceTextField.setText(selectedPerson.getBirthPlace());
+    }
 
     @FXML
     private void formatFirstNameTextField() {
@@ -119,7 +131,7 @@ public class CreatePersonController {
         ArrayList<Person> people = Storage.getPeopleArray();
 
         for (Person person : people) {
-            if (personalCode.equals(person.getPersonalCode())) {
+            if (person != selectedPerson && personalCode.equals(person.getPersonalCode())) {
                 return true;
             }
         }
@@ -152,23 +164,26 @@ public class CreatePersonController {
     @FXML
     private void checkFields() {
         checkIfBirthYearValid();
-        addPersonButton.setDisable(!personalCodeValid() || textFieldsEmpty());
+        editPersonButton.setDisable(!personalCodeValid() || textFieldsEmpty());
     }
 
     @FXML
-    private void addPersonToStorage() {
+    private void editPerson() {
         String firstName = firstNameTextField.getText();
         String lastName = lastNameTextField.getText();
         String personalCode = personalCodeTextField.getText();
         int birthYear = Integer.parseInt(birthYearTextField.getText());
         String birthPlace = birthPlaceTextField.getText();
 
-        Person person = new Person(firstName, lastName, personalCode, birthYear, birthPlace);
-        Storage.addPerson(person);
-        Canvas.addNode(person.getNode());
+        selectedPerson.setFirstName(firstName);
+        selectedPerson.setLastName(lastName);
+        selectedPerson.setPersonalCode(personalCode);
+        selectedPerson.setBirthYear(birthYear);
+        selectedPerson.setBirthPlace(birthPlace);
+        selectedPerson.updateNode();
 
         // Close window
-        Stage stage = (Stage) addPersonButton.getScene().getWindow();
+        Stage stage = (Stage) editPersonButton.getScene().getWindow();
         stage.close();
     }
 }

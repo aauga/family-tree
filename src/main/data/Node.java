@@ -16,7 +16,7 @@ public class Node {
     private final Text text;
     private final Ellipse ellipse;
 
-    private final Person person;
+    private Person person;
     private final double posX, posY;
 
     public Node(Person person, double posX, double posY) {
@@ -28,7 +28,6 @@ public class Node {
         ellipse = new Ellipse();
 
         handleMousePressed();
-        
         createNodeLayout();
     }
 
@@ -61,6 +60,7 @@ public class Node {
             }
             else {
                 try {
+                    Canvas.setSelectedPerson(person);
                     showEditPersonWindow();
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -80,6 +80,11 @@ public class Node {
 
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.show();
+    }
+
+    public void updateInformation(Person person) {
+        this.person = person;
+        createNodeLayout();
     }
 
     public Ellipse getEllipse() {
