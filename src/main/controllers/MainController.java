@@ -62,6 +62,19 @@ public class MainController {
     }
 
     @FXML
+    public void showTableWindow() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../layouts/tableLayout.fxml"));
+        Parent parent = loader.load();
+        Stage stage = new Stage();
+
+        stage.setTitle("Table");
+        stage.setScene(new Scene(parent, 600, 400));
+
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.show();
+    }
+
+    @FXML
     public void enlargeCanvas() {
         canvas.setPrefHeight(canvas.getHeight() + 50.0);
         canvas.setPrefWidth(canvas.getWidth() + 50.0);

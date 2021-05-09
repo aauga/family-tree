@@ -15,9 +15,9 @@
     </ScrollPane>
     <ButtonBar prefHeight="40.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
       <buttons>
-         <Button alignment="CENTER" layoutX="430.0" layoutY="18.0" mnemonicParsing="false" onAction="#enlargeCanvas" text="Show Table..." />
-          <Button mnemonicParsing="false" onAction="#enlargeCanvas" text="Enlarge" />
-         <Button layoutX="503.0" layoutY="18.0" mnemonicParsing="false" onAction="#showCreateConnectionWindow" text="Connect" />
+         <Button alignment="CENTER" contentDisplay="CENTER" layoutX="430.0" layoutY="18.0" mnemonicParsing="false" onAction="#showTableWindow" text="Show Table..." />
+          <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#enlargeCanvas" text="Enlarge" />
+         <Button alignment="CENTER" contentDisplay="CENTER" layoutX="503.0" layoutY="18.0" mnemonicParsing="false" onAction="#showCreateConnectionWindow" text="Connect" />
       </buttons>
     </ButtonBar>
 </AnchorPane>
