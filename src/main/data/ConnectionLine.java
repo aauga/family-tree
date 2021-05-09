@@ -14,7 +14,7 @@ import java.util.Random;
 
 public class ConnectionLine {
     private Line line;
-    private final Person firstPerson, secondPerson;
+    private Person firstPerson, secondPerson;
 
     public ConnectionLine(Person firstPerson, Person secondPerson) {
         this.firstPerson = firstPerson;
@@ -96,5 +96,21 @@ public class ConnectionLine {
 
     public Line getLine() {
         return line;
+    }
+
+    public Person getFirstPerson() {
+        return firstPerson;
+    }
+
+    public Person getSecondPerson() {
+        return secondPerson;
+    }
+
+    public void setFirstPerson(Person person) {
+        firstPerson = person;
+    }
+
+    public void setSecondPerson(Person person) {
+        secondPerson = person;
     }
 }
