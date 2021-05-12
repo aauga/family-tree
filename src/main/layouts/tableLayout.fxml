@@ -1,8 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.controllers.TableController">
-    <TableView fx:id="peopleTableView" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+<AnchorPane prefHeight="400.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.controllers.TableController">
+   <HBox prefHeight="400.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <children>
+          <TabPane prefHeight="200.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
+              <Tab text="All People">
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                      <TableView fx:id="peopleTableView" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  </AnchorPane>
+              </Tab>
+              <Tab text="All Connections">
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                  <children>
+                     <TableView fx:id="connectionsTableView" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  </children></AnchorPane>
+              </Tab>
+          </TabPane>
+         <Separator orientation="VERTICAL" prefHeight="200.0" />
+         <VBox prefWidth="200.0" spacing="25.0">
+            <children>
+               <VBox spacing="10.0">
+                  <children>
+                       <Label text="Sort by" />
+                     <RadioButton mnemonicParsing="false" text="First Name" />
+                     <RadioButton mnemonicParsing="false" text="Last Name" />
+                     <CheckBox mnemonicParsing="false" text="Connection" />
+                  </children>
+               </VBox>
+               <VBox spacing="5.0">
+                  <children>
+                     <Label text="Name" />
+                     <TextField />
+                  </children>
+                  <VBox.margin>
+                     <Insets />
+                  </VBox.margin>
+               </VBox>
+               <VBox layoutX="10.0" layoutY="133.0" spacing="5.0">
+                  <children>
+                     <Label text="Connection" />
+                     <ChoiceBox prefWidth="190.0" />
+                  </children>
+               </VBox>
+            </children>
+            <HBox.margin>
+               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+            </HBox.margin>
+         </VBox>
+      </children>
+   </HBox>
 </AnchorPane>

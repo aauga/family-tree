@@ -68,7 +68,7 @@ public class MainController {
         Stage stage = new Stage();
 
         stage.setTitle("Table");
-        stage.setScene(new Scene(parent, 600, 400));
+        stage.setScene(new Scene(parent, 800, 400));
 
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.show();
