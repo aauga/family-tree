@@ -113,7 +113,7 @@ public class TableController {
     @FXML
     public void handleCriteriaTextField() {
         String criteria = criteriaTextField.getText();
-        ArrayList<Person> filteredList = null;
+        ArrayList<Person> filteredList = new ArrayList<>();
 
         if(firstNameRadioButton.isSelected()) {
             FilterCriteria firstNameCriteria = new CriteriaFirstname();
