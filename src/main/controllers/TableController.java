@@ -1,16 +1,22 @@
 package main.controllers;
 
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import main.data.ConnectionLine;
 import main.data.Person;
 import main.data.Storage;
+import main.util.filter.CriteriaFirstname;
+import main.util.filter.CriteriaLastname;
+import main.util.filter.FilterCriteria;
 
 import java.util.ArrayList;
 
 public class TableController {
+
+    private ArrayList<Person> peopleList;
+    private ArrayList<ConnectionLine> connectionList;
 
     @FXML
     private TableView<Person> peopleTableView;
@@ -18,11 +24,29 @@ public class TableController {
     @FXML
     private TableView<ConnectionLine> connectionsTableView;
 
+    @FXML
+    private RadioButton firstNameRadioButton, lastNameRadioButton;
+
+    @FXML
+    private CheckBox connectionCheckBox;
+
+    @FXML
+    private TextField criteriaTextField;
+
+    @FXML
+    private ChoiceBox<String> connectionChoiceBox;
+
     public void initialize() {
+        peopleList = Storage.getPeopleArray();
+        connectionList = Storage.getConnectionLineArray();
+
         initializePeopleTable();
         initializeConnectionTable();
-        populatePeopleTable();
-        populateConnectionTable();
+
+        populateConnectionChoiceBox();
+
+        populatePeopleTable(peopleList);
+        populateConnectionTable(connectionList);
     }
 
     private void initializePeopleTable() {
@@ -65,19 +89,46 @@ public class TableController {
         connectionsTableView.getColumns().add(secondPersonData);
     }
 
-    private void populatePeopleTable() {
-        ArrayList<Person> list = Storage.getPeopleArray();
+    private void populateConnectionChoiceBox() {
+        connectionChoiceBox.setItems(FXCollections.observableArrayList(
+                "Father", "Mother", "Child", "Grandparent", "Great-grandparent", "Other"));
+    }
+
+    private void populatePeopleTable(ArrayList<Person> list) {
+        peopleTableView.getItems().clear();
 
         for(Person person : list) {
             peopleTableView.getItems().add(person);
         }
     }
 
-    private void populateConnectionTable() {
-        ArrayList<ConnectionLine> list = Storage.getConnectionLineArray();
+    private void populateConnectionTable(ArrayList<ConnectionLine> list) {
+        connectionsTableView.getItems().clear();
 
         for(ConnectionLine connection : list) {
             connectionsTableView.getItems().add(connection);
         }
+    }
+
+    @FXML
+    public void handleCriteriaTextField() {
+        String criteria = criteriaTextField.getText();
+        ArrayList<Person> filteredList = null;
+
+        if(firstNameRadioButton.isSelected()) {
+            FilterCriteria firstNameCriteria = new CriteriaFirstname();
+            filteredList = firstNameCriteria.filterList(peopleList, criteria);
+        }
+        else if(lastNameRadioButton.isSelected()) {
+            FilterCriteria lastNameCriteria = new CriteriaLastname();
+            filteredList = lastNameCriteria.filterList(peopleList, criteria);
+        }
+
+        populatePeopleTable(filteredList);
+    }
+
+    @FXML
+    public void handleConnectionCheckBox() {
+        connectionChoiceBox.setDisable(!connectionCheckBox.isSelected());
     }
 }
