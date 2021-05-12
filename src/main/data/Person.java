@@ -83,6 +83,6 @@ public class Person {
 
     @Override
     public String toString() {
-        return firstName + " " + lastName.charAt(0) + ". (" + personalCode + ")";
+        return firstName + " " + lastName + " (" + personalCode + ")";
     }
 }

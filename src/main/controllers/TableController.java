@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import main.data.ConnectionLine;
 import main.data.Person;
 import main.data.Storage;
 
@@ -14,7 +15,17 @@ public class TableController {
     @FXML
     private TableView<Person> peopleTableView;
 
+    @FXML
+    private TableView<ConnectionLine> connectionsTableView;
+
     public void initialize() {
+        initializePeopleTable();
+        initializeConnectionTable();
+        populatePeopleTable();
+        populateConnectionTable();
+    }
+
+    private void initializePeopleTable() {
         TableColumn<Person, String> firstNameCol = new TableColumn<>("First Name");
         firstNameCol.setCellValueFactory(new PropertyValueFactory<>("firstName"));
 
@@ -37,15 +48,36 @@ public class TableController {
         peopleTableView.getColumns().add(personalCodeCol);
         peopleTableView.getColumns().add(birthYearCol);
         peopleTableView.getColumns().add(birthPlaceCol);
-
-        addElementsToTable();
     }
 
-    private void addElementsToTable() {
+    private void initializeConnectionTable() {
+        TableColumn<ConnectionLine, String> connectionTypeCol = new TableColumn<>("Connection");
+        connectionTypeCol.setCellValueFactory(new PropertyValueFactory<>("connectionType"));
+
+        TableColumn<ConnectionLine, String> firstPersonData = new TableColumn<>("First Person");
+        firstPersonData.setCellValueFactory(new PropertyValueFactory<>("firstPerson"));
+
+        TableColumn<ConnectionLine, String> secondPersonData = new TableColumn<>("Second Person");
+        secondPersonData.setCellValueFactory(new PropertyValueFactory<>("secondPerson"));
+
+        connectionsTableView.getColumns().add(firstPersonData);
+        connectionsTableView.getColumns().add(connectionTypeCol);
+        connectionsTableView.getColumns().add(secondPersonData);
+    }
+
+    private void populatePeopleTable() {
         ArrayList<Person> list = Storage.getPeopleArray();
 
         for(Person person : list) {
             peopleTableView.getItems().add(person);
+        }
+    }
+
+    private void populateConnectionTable() {
+        ArrayList<ConnectionLine> list = Storage.getConnectionLineArray();
+
+        for(ConnectionLine connection : list) {
+            connectionsTableView.getItems().add(connection);
         }
     }
 }
