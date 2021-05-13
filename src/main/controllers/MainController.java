@@ -25,6 +25,7 @@ public class MainController {
 
     public void initialize() {
         CanvasUtil.setCanvas(canvas);
+        LoadFileUtil.loadTempFile();
     }
 
     @FXML

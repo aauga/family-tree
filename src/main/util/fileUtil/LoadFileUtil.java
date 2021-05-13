@@ -27,6 +27,15 @@ public class LoadFileUtil {
         }
     }
 
+    public static void loadTempFile() {
+        String path = System.getProperty("java.io.tmpdir") + "\\familyTreeTemp.csv";
+        File file = new File(path);
+
+        if(file.exists()) {
+            loadFile(path);
+        }
+    }
+
     private static void scanPeopleList(Scanner scanner) {
         int num = scanner.nextInt();
 

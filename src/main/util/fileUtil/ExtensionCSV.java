@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class ExtensionCSV extends FileExtension {
     @Override
@@ -43,7 +44,7 @@ public class ExtensionCSV extends FileExtension {
 
         for(Person person : list) {
             Node node = person.getNode();
-            text.append(String.format("%s;%s;%s;%d;%s;%.1f;%.1f\n", person.getFirstName(), person.getLastName(), person.getPersonalCode(), person.getBirthYear(), person.getBirthPlace(), node.getPosX(), node.getPosY()));
+            text.append(String.format(Locale.US, "%s;%s;%s;%d;%s;%.1f;%.1f\n", person.getFirstName(), person.getLastName(), person.getPersonalCode(), person.getBirthYear(), person.getBirthPlace(), node.getPosX(), node.getPosY()));
         }
     }
 
