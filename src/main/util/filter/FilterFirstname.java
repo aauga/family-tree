@@ -4,9 +4,9 @@ import main.data.Person;
 
 import java.util.ArrayList;
 
-public class CriteriaFirstname implements FilterCriteria {
+public class FilterFirstname implements PersonFilter {
     @Override
-    public ArrayList<Person> filterList(ArrayList<Person> list, String criteria) {
+    public ArrayList<Person> filterPeople(ArrayList<Person> list, String criteria) {
         ArrayList<Person> filteredList = new ArrayList<>();
 
         for (Person person : list) {

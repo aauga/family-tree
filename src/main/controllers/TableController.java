@@ -7,9 +7,9 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import main.data.ConnectionLine;
 import main.data.Person;
 import main.data.Storage;
-import main.util.filter.CriteriaFirstname;
-import main.util.filter.CriteriaLastname;
-import main.util.filter.FilterCriteria;
+import main.util.filter.FilterFirstname;
+import main.util.filter.FilterLastname;
+import main.util.filter.PersonFilter;
 
 import java.util.ArrayList;
 
@@ -113,18 +113,27 @@ public class TableController {
     @FXML
     public void handleCriteriaTextField() {
         String criteria = criteriaTextField.getText();
-        ArrayList<Person> filteredList = new ArrayList<>();
+        ArrayList<Person> filteredPeopleList = new ArrayList<>();
+        ArrayList<ConnectionLine> filteredConnectionList = new ArrayList<>();
+
+        if(connectionCheckBox.isSelected()) {
+            String value = connectionChoiceBox.getValue();
+
+        }
 
         if(firstNameRadioButton.isSelected()) {
-            FilterCriteria firstNameCriteria = new CriteriaFirstname();
-            filteredList = firstNameCriteria.filterList(peopleList, criteria);
+            PersonFilter firstNameCriteria = new FilterFirstname();
+            filteredPeopleList = firstNameCriteria.filterPeople(peopleList, criteria);
+            filteredConnectionList = firstNameCriteria.filterConnections(filteredPeopleList);
         }
         else if(lastNameRadioButton.isSelected()) {
-            FilterCriteria lastNameCriteria = new CriteriaLastname();
-            filteredList = lastNameCriteria.filterList(peopleList, criteria);
+            PersonFilter lastNameCriteria = new FilterLastname();
+            filteredPeopleList = lastNameCriteria.filterPeople(peopleList, criteria);
+            filteredConnectionList = lastNameCriteria.filterConnections(peopleList);
         }
 
-        populatePeopleTable(filteredList);
+        populatePeopleTable(filteredPeopleList);
+        populateConnectionTable(filteredConnectionList);
     }
 
     @FXML
