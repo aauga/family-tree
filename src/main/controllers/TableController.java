@@ -7,6 +7,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import main.data.ConnectionLine;
 import main.data.Person;
 import main.data.Storage;
+import main.util.filter.ConnectionFilter;
 import main.util.filter.FilterFirstname;
 import main.util.filter.FilterLastname;
 import main.util.filter.PersonFilter;
@@ -25,10 +26,7 @@ public class TableController {
     private TableView<ConnectionLine> connectionsTableView;
 
     @FXML
-    private RadioButton firstNameRadioButton, lastNameRadioButton;
-
-    @FXML
-    private CheckBox connectionCheckBox;
+    private RadioButton firstNameRadioButton, lastNameRadioButton, connectionRadioButton;
 
     @FXML
     private TextField criteriaTextField;
@@ -116,20 +114,20 @@ public class TableController {
         ArrayList<Person> filteredPeopleList = new ArrayList<>();
         ArrayList<ConnectionLine> filteredConnectionList = new ArrayList<>();
 
-        if(connectionCheckBox.isSelected()) {
-            String value = connectionChoiceBox.getValue();
-
-        }
-
         if(firstNameRadioButton.isSelected()) {
             PersonFilter firstNameCriteria = new FilterFirstname();
             filteredPeopleList = firstNameCriteria.filterPeople(peopleList, criteria);
-            filteredConnectionList = firstNameCriteria.filterConnections(filteredPeopleList);
+            filteredConnectionList = PersonFilter.filterConnections(filteredPeopleList);
         }
         else if(lastNameRadioButton.isSelected()) {
             PersonFilter lastNameCriteria = new FilterLastname();
             filteredPeopleList = lastNameCriteria.filterPeople(peopleList, criteria);
-            filteredConnectionList = lastNameCriteria.filterConnections(peopleList);
+            filteredConnectionList = PersonFilter.filterConnections(filteredPeopleList);
+        }
+        else if(connectionRadioButton.isSelected()) {
+            String value = connectionChoiceBox.getValue();
+            filteredConnectionList = ConnectionFilter.filterConnections(connectionList, value);
+            filteredPeopleList = ConnectionFilter.filterPeople(filteredConnectionList);
         }
 
         populatePeopleTable(filteredPeopleList);
@@ -137,7 +135,23 @@ public class TableController {
     }
 
     @FXML
-    public void handleConnectionCheckBox() {
-        connectionChoiceBox.setDisable(!connectionCheckBox.isSelected());
+    public void handleNameRadioButton() {
+        connectionChoiceBox.setDisable(true);
+        criteriaTextField.setDisable(false);
+
+        connectionChoiceBox.getSelectionModel().clearSelection();
+
+        handleCriteriaTextField();
+    }
+
+    @FXML
+    public void handleConnectionRadioButton() {
+        criteriaTextField.setDisable(true);
+        connectionChoiceBox.setDisable(false);
+
+        criteriaTextField.clear();
+        connectionChoiceBox.getSelectionModel().clearSelection();
+
+        handleCriteriaTextField();
     }
 }
