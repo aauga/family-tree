@@ -98,7 +98,7 @@ public class TableController {
 
     private void populateConnectionChoiceBox() {
         connectionChoiceBox.setItems(FXCollections.observableArrayList(
-                "Father", "Mother", "Child", "Grandparent", "Great-grandparent", "Other"));
+                "Spouse", "Father", "Mother", "Child", "Grandparent", "Brother", "Sister", "Other"));
     }
 
     private void populatePeopleTable(ArrayList<Person> list) {

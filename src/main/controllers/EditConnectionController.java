@@ -29,7 +29,7 @@ public class EditConnectionController {
         CanvasUtil.setClickedOnElement(true);
 
         connectionType.setItems(FXCollections.observableArrayList(
-                "Father", "Mother", "Child", "Grandparent", "Great-grandparent", "Other"));
+                "Spouse", "Father", "Mother", "Child", "Grandparent", "Brother", "Sister", "Other"));
 
         selectedLine = CanvasUtil.getSelectedLine();
 

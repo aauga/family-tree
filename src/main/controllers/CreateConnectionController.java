@@ -30,7 +30,7 @@ public class CreateConnectionController {
         list = Storage.getPeopleArray();
 
         connectionType.setItems(FXCollections.observableArrayList(
-                "Father", "Mother", "Child", "Grandparent", "Great-grandparent", "Other"));
+                "Spouse", "Father", "Mother", "Child", "Grandparent", "Brother", "Sister", "Other"));
 
         addPeopleToFirstComboBox();
     }
