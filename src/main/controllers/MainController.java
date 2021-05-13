@@ -85,4 +85,9 @@ public class MainController {
         canvas.setPrefHeight(canvas.getHeight() + 50.0);
         canvas.setPrefWidth(canvas.getWidth() + 50.0);
     }
+
+    @FXML
+    public void saveToFile() {
+
+    }
 }

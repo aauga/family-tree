@@ -1,18 +1,18 @@
-package main.util.filter;
+package main.util.dataFilteringUtil;
 
 import main.data.Person;
 
 import java.util.ArrayList;
 
-public class FilterLastname implements PersonFilter {
+public class FilterFirstname implements PersonFilter {
     @Override
     public ArrayList<Person> filterPeople(ArrayList<Person> list, String criteria) {
         ArrayList<Person> filteredList = new ArrayList<>();
 
         for (Person person : list) {
-            String lastName = person.getLastName();
+            String firstName = person.getFirstName();
 
-            if (lastName.contains(criteria)) {
+            if (firstName.contains(criteria)) {
                 filteredList.add(person);
             }
         }

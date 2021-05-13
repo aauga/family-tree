@@ -1,4 +1,4 @@
-package main.util.filter;
+package main.util.dataFilteringUtil;
 
 import main.data.ConnectionLine;
 import main.data.Person;

@@ -8,10 +8,10 @@ import main.data.Canvas;
 import main.data.ConnectionLine;
 import main.data.Person;
 import main.data.Storage;
-import main.util.filter.ConnectionFilter;
-import main.util.filter.FilterFirstname;
-import main.util.filter.FilterLastname;
-import main.util.filter.PersonFilter;
+import main.util.dataFilteringUtil.ConnectionFilter;
+import main.util.dataFilteringUtil.FilterFirstname;
+import main.util.dataFilteringUtil.FilterLastname;
+import main.util.dataFilteringUtil.PersonFilter;
 
 import java.util.ArrayList;
 
