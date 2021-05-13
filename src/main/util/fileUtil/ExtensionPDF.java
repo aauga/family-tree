@@ -5,6 +5,7 @@ import javafx.scene.SnapshotParameters;
 import javafx.scene.image.WritableImage;
 import javafx.scene.layout.AnchorPane;
 import main.util.CanvasUtil;
+import main.util.TableUtil;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
@@ -19,9 +20,33 @@ import java.io.IOException;
 public class ExtensionPDF extends FileExtension {
     @Override
     public void saveToFile(String location) {
+        PDDocument doc = new PDDocument();
         File file = new File(location);
+
         AnchorPane canvas = CanvasUtil.getCanvas();
-        WritableImage nodeshot = canvas.snapshot(new SnapshotParameters(), null);
+        AnchorPane peopleTable = TableUtil.getPeopleTable();
+        AnchorPane connectionTable = TableUtil.getConnectionTable();
+
+        drawToNewPage(doc, canvas);
+
+        if(peopleTable != null) {
+            drawToNewPage(doc, peopleTable);
+        }
+
+        if(connectionTable != null) {
+            drawToNewPage(doc, connectionTable);
+        }
+
+        try {
+            doc.save(file);
+            doc.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void drawToNewPage(PDDocument doc, AnchorPane anchorPane) {
+        WritableImage nodeshot = anchorPane.snapshot(new SnapshotParameters(), null);
 
         // Store image in memory
         ByteArrayOutputStream output = new ByteArrayOutputStream();
@@ -33,7 +58,6 @@ public class ExtensionPDF extends FileExtension {
             e.printStackTrace();
         }
 
-        PDDocument doc = new PDDocument();
         PDPage page = new PDPage();
         PDImageXObject pdImage;
         PDPageContentStream content;
@@ -55,8 +79,6 @@ public class ExtensionPDF extends FileExtension {
             content.close();
 
             doc.addPage(page);
-            doc.save(file);
-            doc.close();
         } catch (IOException e) {
             e.printStackTrace();
         }

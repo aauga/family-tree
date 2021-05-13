@@ -4,10 +4,12 @@ import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
 import main.util.CanvasUtil;
 import main.data.ConnectionLine;
 import main.data.Person;
 import main.data.Storage;
+import main.util.TableUtil;
 import main.util.dataFilteringUtil.ConnectionFilter;
 import main.util.dataFilteringUtil.FilterFirstname;
 import main.util.dataFilteringUtil.FilterLastname;
@@ -35,7 +37,13 @@ public class TableController {
     @FXML
     private ChoiceBox<String> connectionChoiceBox;
 
+    @FXML
+    private AnchorPane peopleAnchorPane, connectionAnchorPane;
+
     public void initialize() {
+        TableUtil.setPeopleTable(peopleAnchorPane);
+        TableUtil.setConnectionTable(connectionAnchorPane);
+
         peopleList = Storage.getPeopleArray();
         connectionList = Storage.getConnectionLineArray();
 
