@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -15,6 +16,9 @@ public class MainController {
 
     @FXML
     private AnchorPane canvas;
+
+    @FXML
+    private Button showTableButton;
 
     public void initialize() {
         Canvas.setCanvas(canvas);
@@ -63,6 +67,8 @@ public class MainController {
 
     @FXML
     public void showTableWindow() throws IOException {
+        showTableButton.setDisable(true);
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../layouts/tableLayout.fxml"));
         Parent parent = loader.load();
         Stage stage = new Stage();
@@ -70,8 +76,8 @@ public class MainController {
         stage.setTitle("Table");
         stage.setScene(new Scene(parent, 800, 400));
 
-        stage.initModality(Modality.APPLICATION_MODAL);
         stage.show();
+        stage.setOnCloseRequest(e -> showTableButton.setDisable(false));
     }
 
     @FXML
