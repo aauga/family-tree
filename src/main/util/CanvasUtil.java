@@ -21,6 +21,10 @@ public class CanvasUtil {
     private static Person selectedPerson;
     private static ConnectionLine selectedLine;
 
+    public static void clearCanvas() {
+        canvas.getChildren().clear();
+    }
+
     // Nodes
 
     public static void addNode(Node node) {

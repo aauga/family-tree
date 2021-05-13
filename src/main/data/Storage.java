@@ -22,6 +22,11 @@ public class Storage {
         lines.remove(line);
     }
 
+    public static void clearData() {
+        people.clear();
+        lines.clear();
+    }
+
     public static Person getPersonByPersonalCode(String code) {
         for(Person person : people) {
             if(person.getPersonalCode().equals(code)) {

@@ -15,6 +15,9 @@ public class LoadFileUtil {
     private static String line;
 
     public static void loadFile(String path) {
+        CanvasUtil.clearCanvas();
+        Storage.clearData();
+
         File file = new File(path);
 
         try {
