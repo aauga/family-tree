@@ -4,6 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import main.data.Canvas;
 import main.data.ConnectionLine;
 import main.data.Person;
 import main.data.Storage;
@@ -132,6 +133,8 @@ public class TableController {
 
         populatePeopleTable(filteredPeopleList);
         populateConnectionTable(filteredConnectionList);
+
+        Canvas.updateWithFilteredData(filteredPeopleList, filteredConnectionList);
     }
 
     @FXML

@@ -1,7 +1,9 @@
 package main.data;
 
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.shape.Ellipse;
 import javafx.scene.shape.Line;
+import javafx.scene.text.Text;
 
 import java.util.ArrayList;
 
@@ -18,23 +20,42 @@ public class Canvas {
     // Nodes
 
     public static void addNode(Node node) {
-        canvas.getChildren().add(node.getEllipse());
-        canvas.getChildren().add(node.getText());
+        Ellipse ellipse = node.getEllipse();
+        Text text = node.getText();
+
+        if(!canvas.getChildren().contains(ellipse) && !canvas.getChildren().contains(text)) {
+            canvas.getChildren().add(node.getEllipse());
+            canvas.getChildren().add(node.getText());
+        }
     }
 
     public static void removeNode(Node node) {
-        canvas.getChildren().remove(node.getEllipse());
-        canvas.getChildren().remove(node.getText());
+        Ellipse ellipse = node.getEllipse();
+        Text text = node.getText();
+
+        if(canvas.getChildren().contains(ellipse)) {
+            canvas.getChildren().remove(node.getEllipse());
+        }
+
+        if(canvas.getChildren().contains(text)) {
+            canvas.getChildren().remove(node.getText());
+        }
     }
 
     // Connection lines
 
     public static void addLine(ConnectionLine connectionLine) {
-        canvas.getChildren().add(0, connectionLine.getLine());
+        Line line = connectionLine.getLine();
+
+        if(!canvas.getChildren().contains(line)) {
+            canvas.getChildren().add(0, connectionLine.getLine());
+        }
     }
 
     public static void removeLine(Line line) {
-        canvas.getChildren().remove(line);
+        if(canvas.getChildren().contains(line)) {
+            canvas.getChildren().remove(line);
+        }
     }
 
     /**
@@ -49,6 +70,22 @@ public class Canvas {
             if(line.isConnectedTo(person)) {
                 removeLine(line.getLine());
             }
+        }
+    }
+
+    // Filtering
+
+    public static void updateWithFilteredData(ArrayList<Person> personList, ArrayList<ConnectionLine> connectionList) {
+        canvas.getChildren().clear();
+
+        for(Person person : personList) {
+            addNode(person.getNode());
+        }
+
+        for(ConnectionLine connection : connectionList) {
+            addLine(connection);
+            addNode(connection.getFirstPerson().getNode());
+            addNode(connection.getSecondPerson().getNode());
         }
     }
 
