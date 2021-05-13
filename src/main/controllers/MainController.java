@@ -9,7 +9,11 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import main.data.Canvas;
+import main.util.fileUtil.ExtensionCSV;
+import main.util.fileUtil.FileExtension;
+import main.util.fileUtil.FileUtil;
 
+import java.io.File;
 import java.io.IOException;
 
 public class MainController {
@@ -88,6 +92,9 @@ public class MainController {
 
     @FXML
     public void saveToFile() {
+        FileUtil fileUtil = new FileUtil();
+        String path = fileUtil.selectLocation();
 
+        fileUtil.saveFile(path);
     }
 }

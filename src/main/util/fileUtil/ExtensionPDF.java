@@ -1,6 +1,6 @@
 package main.util.fileUtil;
 
-public class SaveCSV extends FileType {
+public class ExtensionPDF extends FileExtension {
     @Override
     public void saveToFile(String location) {
 

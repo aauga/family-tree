@@ -1,5 +1,7 @@
 package main.util.fileUtil;
 
-abstract class FileType {
+public abstract class FileExtension {
+    String path;
+
     abstract public void saveToFile(String location);
 }
