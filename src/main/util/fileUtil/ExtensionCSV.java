@@ -19,7 +19,7 @@ public class ExtensionCSV extends FileExtension {
         String content = generateContent();
 
         try {
-            OutputStreamWriter writer = new OutputStreamWriter(new FileOutputStream(file), StandardCharsets.UTF_8);
+            OutputStreamWriter writer = new OutputStreamWriter(new FileOutputStream(file));
             writer.write(content);
             writer.close();
         } catch(IOException e) {
@@ -56,5 +56,10 @@ public class ExtensionCSV extends FileExtension {
 
             text.append(String.format("%s;%s;%s\n", firstPerson.getPersonalCode(), connection.getConnectionType(), secondPerson.getPersonalCode()));
         }
+    }
+
+    public void saveTempFile() {
+        String path = System.getProperty("java.io.tmpdir") + "\\familyTreeTemp.csv";
+        saveToFile(path);
     }
 }

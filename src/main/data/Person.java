@@ -23,6 +23,16 @@ public class Person {
         node = new Node(this, CanvasUtil.getMousePosX(), CanvasUtil.getMousePosY());
     }
 
+    public Person(String firstName, String lastName, String personalCode, int birthYear, String birthPlace, double posX, double posY) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.personalCode = personalCode;
+        this.birthYear = birthYear;
+        this.birthPlace = birthPlace;
+        this.connections = new ArrayList<>();
+        node = new Node(this, posX, posY);
+    }
+
     public void addConnection(Person person) {
         connections.add(person);
     }

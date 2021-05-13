@@ -5,6 +5,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import main.util.fileUtil.ExtensionCSV;
+import main.util.fileUtil.FileExtension;
 
 public class Main extends Application {
 
@@ -19,6 +21,10 @@ public class Main extends Application {
         primaryStage.setMinWidth(windowWidth + 15);
         primaryStage.setMinHeight(windowHeight + 40);
         primaryStage.show();
+        primaryStage.setOnCloseRequest(e -> {
+            ExtensionCSV fileExtension = new ExtensionCSV();
+            fileExtension.saveTempFile();
+        });
     }
 
     public static void main(String[] args) {

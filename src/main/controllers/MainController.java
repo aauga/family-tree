@@ -9,7 +9,10 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import main.util.CanvasUtil;
+import main.util.fileUtil.ExtensionCSV;
 import main.util.fileUtil.FileUtil;
+import main.util.fileUtil.LoadFileUtil;
+
 import java.io.IOException;
 
 public class MainController {
@@ -87,10 +90,24 @@ public class MainController {
     }
 
     @FXML
-    public void saveToFile() {
+    public void handleOpenFileMenuItem() {
         FileUtil fileUtil = new FileUtil();
-        String path = fileUtil.selectLocation();
+        String path = fileUtil.selectLocation(true);
+
+        LoadFileUtil.loadFile(path);
+    }
+
+    @FXML
+    public void handleSaveToFileMenuItem() {
+        FileUtil fileUtil = new FileUtil();
+        String path = fileUtil.selectLocation(false);
 
         fileUtil.saveFile(path);
+    }
+
+    @FXML
+    public void handleCloseMenuItem() {
+        ExtensionCSV fileExtension = new ExtensionCSV();
+        fileExtension.saveTempFile();
     }
 }

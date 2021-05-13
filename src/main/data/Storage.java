@@ -22,6 +22,16 @@ public class Storage {
         lines.remove(line);
     }
 
+    public static Person getPersonByPersonalCode(String code) {
+        for(Person person : people) {
+            if(person.getPersonalCode().equals(code)) {
+                return person;
+            }
+        }
+
+        return null;
+    }
+
     // Getters
     public static ArrayList<Person> getPeopleArray() {
         return people;
