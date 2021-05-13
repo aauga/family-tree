@@ -1,5 +1,7 @@
 package main.data;
 
+import main.util.CanvasUtil;
+
 import java.util.ArrayList;
 
 public class Person {
@@ -18,7 +20,7 @@ public class Person {
         this.birthYear = birthYear;
         this.birthPlace = birthPlace;
         this.connections = new ArrayList<>();
-        node = new Node(this, Canvas.getMousePosX(), Canvas.getMousePosY());
+        node = new Node(this, CanvasUtil.getMousePosX(), CanvasUtil.getMousePosY());
     }
 
     public void addConnection(Person person) {

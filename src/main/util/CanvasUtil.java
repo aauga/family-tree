@@ -1,13 +1,17 @@
-package main.data;
+package main.util;
 
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Ellipse;
 import javafx.scene.shape.Line;
 import javafx.scene.text.Text;
+import main.data.ConnectionLine;
+import main.data.Node;
+import main.data.Person;
+import main.data.Storage;
 
 import java.util.ArrayList;
 
-public class Canvas {
+public class CanvasUtil {
     private static AnchorPane canvas;
     private static double mousePosX, mousePosY;
 
@@ -91,6 +95,10 @@ public class Canvas {
 
     // Getters
 
+    public static AnchorPane getCanvas() {
+        return canvas;
+    }
+
     public static double getMousePosX() {
         return mousePosX;
     }
@@ -114,15 +122,15 @@ public class Canvas {
     // Setters
 
     public static void setCanvas(AnchorPane canvas) {
-        Canvas.canvas = canvas;
+        CanvasUtil.canvas = canvas;
     }
 
     public static void setMousePosX(double mousePosX) {
-        Canvas.mousePosX = mousePosX;
+        CanvasUtil.mousePosX = mousePosX;
     }
 
     public static void setMousePosY(double mousePosY) {
-        Canvas.mousePosY = mousePosY;
+        CanvasUtil.mousePosY = mousePosY;
     }
 
     public static void setClickedOnElement(boolean state) {

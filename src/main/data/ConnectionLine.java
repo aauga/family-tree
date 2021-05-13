@@ -8,6 +8,7 @@ import javafx.scene.paint.Paint;
 import javafx.scene.shape.Line;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import main.util.CanvasUtil;
 
 import java.io.IOException;
 import java.util.Random;
@@ -30,7 +31,7 @@ public class ConnectionLine {
 
     private void handleMousePressed() {
         line.setOnMouseClicked(mouseEvent -> {
-            Canvas.setSelectedLine(this);
+            CanvasUtil.setSelectedLine(this);
 
             try {
                 showEditConnectionWindow();
@@ -51,7 +52,7 @@ public class ConnectionLine {
 
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.show();
-        stage.setOnCloseRequest(windowEvent -> Canvas.setClickedOnElement(false));
+        stage.setOnCloseRequest(windowEvent -> CanvasUtil.setClickedOnElement(false));
     }
 
     private void createLine() {

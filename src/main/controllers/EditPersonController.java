@@ -6,7 +6,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
 import javafx.stage.Stage;
-import main.data.Canvas;
+import main.util.CanvasUtil;
 import main.data.Person;
 import main.data.Storage;
 
@@ -32,7 +32,7 @@ public class EditPersonController {
     private Person selectedPerson;
 
     public void initialize() {
-        selectedPerson = Canvas.getSelectedPerson();
+        selectedPerson = CanvasUtil.getSelectedPerson();
 
         firstNameTextField.setText(selectedPerson.getFirstName());
         lastNameTextField.setText(selectedPerson.getLastName());
@@ -189,8 +189,8 @@ public class EditPersonController {
 
     @FXML
     public void deletePerson() {
-        Canvas.removeNode(selectedPerson.getNode());
-        Canvas.removeLinesConnectedToNode(selectedPerson);
+        CanvasUtil.removeNode(selectedPerson.getNode());
+        CanvasUtil.removeLinesConnectedToNode(selectedPerson);
         Storage.removePerson(selectedPerson);
 
         // Close window

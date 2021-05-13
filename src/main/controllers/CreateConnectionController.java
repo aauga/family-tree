@@ -6,7 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
-import main.data.Canvas;
+import main.util.CanvasUtil;
 import main.data.ConnectionLine;
 import main.data.Person;
 import main.data.Storage;
@@ -90,7 +90,7 @@ public class CreateConnectionController {
 
         ConnectionLine connectionLine = new ConnectionLine(firstPerson, secondPerson, connection);
         Storage.addLine(connectionLine);
-        Canvas.addLine(connectionLine);
+        CanvasUtil.addLine(connectionLine);
 
         // Close window
         Stage stage = (Stage) createConnectionButton.getScene().getWindow();

@@ -8,12 +8,8 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import main.data.Canvas;
-import main.util.fileUtil.ExtensionCSV;
-import main.util.fileUtil.FileExtension;
+import main.util.CanvasUtil;
 import main.util.fileUtil.FileUtil;
-
-import java.io.File;
 import java.io.IOException;
 
 public class MainController {
@@ -25,15 +21,15 @@ public class MainController {
     private Button showTableButton;
 
     public void initialize() {
-        Canvas.setCanvas(canvas);
+        CanvasUtil.setCanvas(canvas);
     }
 
     @FXML
     public void showCreatePersonWindow() {
         canvas.setOnMouseClicked(mouseEvent -> {
-            if(!Canvas.getClickedOnElement()) {
-                Canvas.setMousePosX(mouseEvent.getX());
-                Canvas.setMousePosY(mouseEvent.getY());
+            if(!CanvasUtil.getClickedOnElement()) {
+                CanvasUtil.setMousePosX(mouseEvent.getX());
+                CanvasUtil.setMousePosY(mouseEvent.getY());
 
                 Parent parent = null;
                 Stage stage = new Stage();

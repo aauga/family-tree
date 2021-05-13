@@ -8,6 +8,7 @@ import javafx.scene.shape.Ellipse;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import main.util.CanvasUtil;
 
 import java.io.IOException;
 
@@ -51,7 +52,7 @@ public class Node {
 
     private void handleMousePressed() {
         ellipse.setOnMousePressed(mouseEvent -> {
-            Canvas.setSelectedPerson(person);
+            CanvasUtil.setSelectedPerson(person);
 
             try {
                 showEditPersonWindow();
@@ -72,7 +73,7 @@ public class Node {
 
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.show();
-        stage.setOnCloseRequest(windowEvent -> Canvas.setClickedOnElement(false));
+        stage.setOnCloseRequest(windowEvent -> CanvasUtil.setClickedOnElement(false));
     }
 
     public void updateInformation(Person person) {

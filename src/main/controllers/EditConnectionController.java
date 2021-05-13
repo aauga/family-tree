@@ -6,7 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
-import main.data.Canvas;
+import main.util.CanvasUtil;
 import main.data.ConnectionLine;
 import main.data.Person;
 import main.data.Storage;
@@ -26,12 +26,12 @@ public class EditConnectionController {
     private Person firstPerson, secondPerson;
 
     public void initialize() {
-        Canvas.setClickedOnElement(true);
+        CanvasUtil.setClickedOnElement(true);
 
         connectionType.setItems(FXCollections.observableArrayList(
                 "Father", "Mother", "Child", "Grandparent", "Great-grandparent", "Other"));
 
-        selectedLine = Canvas.getSelectedLine();
+        selectedLine = CanvasUtil.getSelectedLine();
 
         firstPerson = selectedLine.getFirstPerson();
         secondPerson = selectedLine.getSecondPerson();
@@ -47,7 +47,7 @@ public class EditConnectionController {
         String connection = connectionType.getValue();
         selectedLine.setConnectionType(connection);
 
-        Canvas.setClickedOnElement(false);
+        CanvasUtil.setClickedOnElement(false);
 
         // Close window
         Stage stage = (Stage) editConnectionButton.getScene().getWindow();
@@ -59,10 +59,10 @@ public class EditConnectionController {
         firstPerson.removeConnection(secondPerson);
         secondPerson.removeConnection(firstPerson);
 
-        Canvas.removeLine(selectedLine.getLine());
+        CanvasUtil.removeLine(selectedLine.getLine());
         Storage.removeLine(selectedLine);
 
-        Canvas.setClickedOnElement(false);
+        CanvasUtil.setClickedOnElement(false);
 
         // Close window
         Stage stage = (Stage) deleteConnectionButton.getScene().getWindow();

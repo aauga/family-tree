@@ -6,7 +6,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
 import javafx.stage.Stage;
-import main.data.Canvas;
+import main.util.CanvasUtil;
 import main.data.Person;
 import main.data.Storage;
 
@@ -165,7 +165,7 @@ public class CreatePersonController {
 
         Person person = new Person(firstName, lastName, personalCode, birthYear, birthPlace);
         Storage.addPerson(person);
-        Canvas.addNode(person.getNode());
+        CanvasUtil.addNode(person.getNode());
 
         // Close window
         Stage stage = (Stage) addPersonButton.getScene().getWindow();
