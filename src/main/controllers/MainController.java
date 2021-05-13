@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.MenuItem;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -110,5 +111,7 @@ public class MainController {
     public void handleCloseMenuItem() {
         ExtensionCSV fileExtension = new ExtensionCSV();
         fileExtension.saveTempFile();
+
+        System.exit(0);
     }
 }

@@ -24,7 +24,6 @@ public class Main extends Application {
         primaryStage.setOnCloseRequest(e -> {
             ExtensionCSV fileExtension = new ExtensionCSV();
             fileExtension.saveTempFile();
-            primaryStage.close();
         });
     }
 
