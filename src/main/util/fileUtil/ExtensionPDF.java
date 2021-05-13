@@ -45,7 +45,7 @@ public class ExtensionPDF extends FileExtension {
         }
     }
 
-    public void drawToNewPage(PDDocument doc, AnchorPane anchorPane) {
+    private void drawToNewPage(PDDocument doc, AnchorPane anchorPane) {
         WritableImage nodeshot = anchorPane.snapshot(new SnapshotParameters(), null);
 
         // Store image in memory
