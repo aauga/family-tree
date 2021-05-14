@@ -25,6 +25,14 @@ public class CanvasUtil {
         canvas.getChildren().clear();
     }
 
+    public static void setCanvasWidth(double width) {
+        canvas.setPrefWidth(width);
+    }
+
+    public static void setCanvasHeight(double height) {
+        canvas.setPrefHeight(height);
+    }
+
     // Nodes
 
     public static void addNode(Node node) {

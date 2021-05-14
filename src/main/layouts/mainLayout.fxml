@@ -12,7 +12,7 @@
         </Menu>
     </MenuBar>
     <ScrollPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="24.0">
-        <AnchorPane fx:id="canvas" minHeight="0.0" minWidth="0.0" onMouseClicked="#showCreatePersonWindow" prefHeight="1000.0" prefWidth="1000.0" />
+        <AnchorPane fx:id="canvas" minHeight="0.0" minWidth="0.0" onMouseClicked="#showCreatePersonWindow" prefHeight="1000.0" prefWidth="1000.0" style="-fx-border-width: 0 2px 2px 0; -fx-border-color: lightgray;" />
     </ScrollPane>
     <ButtonBar prefHeight="40.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
       <buttons>

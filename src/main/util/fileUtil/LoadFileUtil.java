@@ -42,6 +42,8 @@ public class LoadFileUtil {
     private static void scanPeopleList(Scanner scanner) {
         int num = scanner.nextInt();
 
+        double maxHeight = 0, maxWidth = 0;
+
         scanner.nextLine();
 
         for(int i = 0; i < num; i++) {
@@ -55,11 +57,22 @@ public class LoadFileUtil {
             double posX = Double.parseDouble(getField());
             double posY = Double.parseDouble(line);
 
+            if(posX > maxWidth) {
+                maxWidth = posX;
+            }
+
+            if(posY > maxHeight) {
+                maxHeight = posY;
+            }
+
             Person person = new Person(firstName, lastName, personalCode, birthYear, birthPlace, posX, posY);
 
             Storage.addPerson(person);
             CanvasUtil.addNode(person.getNode());
         }
+
+        CanvasUtil.setCanvasHeight(maxHeight + 50.0);
+        CanvasUtil.setCanvasWidth(maxWidth + 50.0);
     }
 
     private static void scanConnectionList(Scanner scanner) {
