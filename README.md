@@ -1,7 +1,7 @@
 # About
 Family Tree app, created with JavaFX, lets you create, display, edit and save a family tree.
 
-# Functionality
+# Features
 <b>With the help of this app, you can:</b><br>
 • Create a node with a person's details;<br>
 • Edit information about a person or his/her connections;<br>
